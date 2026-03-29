@@ -79,50 +79,6 @@ export default function About() {
           </div>
         </div>
       </ScrollReveal>
-
-      <div className="grid gap-10 lg:grid-cols-2">
-        <ScrollReveal>
-          <h2 className="font-display mb-4 text-3xl text-white">Photography</h2>
-          <div className="grid grid-cols-3 gap-3">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div
-                key={i}
-                className="aspect-[3/4] rounded-lg border border-[rgba(196,79,216,0.5)] interactive-glow"
-                style={{
-                  background: `linear-gradient(${135 + i * 12}deg, #5a1090 0%, #1a0030 60%, #0d001a 100%)`,
-                }}
-                aria-hidden
-              />
-            ))}
-          </div>
-        </ScrollReveal>
-        <ScrollReveal>
-          <h2 className="font-display mb-4 text-3xl text-white">My Apps</h2>
-          <div className="grid grid-cols-3 gap-4 sm:grid-cols-4">
-            {[
-              { icon: 'fa-solid fa-image', name: 'PicsArt' },
-              { icon: 'fa-solid fa-palette', name: 'Canva' },
-              { icon: 'fa-solid fa-camera', name: 'Lightroom' },
-              { icon: 'fa-solid fa-film', name: 'CapCut' },
-              { icon: 'fa-solid fa-sliders', name: 'Snapseed' },
-              { icon: 'fa-brands fa-figma', name: 'Figma' },
-            ].map((app) => (
-              <div
-                key={app.name}
-                className="flex flex-col items-center gap-2 rounded-xl border border-[rgba(196,79,216,0.5)] bg-[#1a0030] p-4 text-center interactive-glow"
-              >
-                <span
-                  className={`${app.icon} text-2xl text-[#e040fb]`}
-                  aria-hidden
-                />
-                <span className="font-mono-label text-[10px] text-[#d4b8e0]">
-                  {app.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </ScrollReveal>
-      </div>
     </div>
   )
 }
