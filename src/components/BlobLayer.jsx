@@ -5,11 +5,14 @@ const variantClass = {
   '/profile': 'blob-profile',
   '/about': 'blob-about',
   '/projects': 'blob-projects',
+  '/projects/gantt': 'blob-projects',
 }
 
 export default function BlobLayer() {
   const { pathname } = useLocation()
-  const cls = variantClass[pathname] || 'blob-home'
+  const cls =
+    variantClass[pathname] ||
+    (pathname.startsWith('/projects') ? 'blob-projects' : 'blob-home')
   return (
     <div className="blob-layer" aria-hidden>
       <div className={`blob-shape ${cls}`} />

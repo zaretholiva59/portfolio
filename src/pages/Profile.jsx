@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useRef } from 'react'
 import ScrollReveal from '../components/ScrollReveal'
 
@@ -16,14 +17,11 @@ const contacts = [
   { icon: 'fa-brands fa-linkedin', text: 'LinkedIn: linkedin.com/in/zareth' },
 ]
 
-const previews = [
-  'Dashboard UI',
-  'Brand Poster',
-  'Mobile App',
-  'Landing Neo',
-  'Editorial',
-  'Packaging',
-]
+const previewCard = {
+  title: 'Task Manager — Gantt',
+  desc: 'Gestión de proyectos con diagrama de Gantt interactivo',
+  to: '/projects/gantt',
+}
 
 export default function Profile() {
   const scroller = useRef(null)
@@ -111,21 +109,23 @@ export default function Profile() {
             ref={scroller}
             className="flex gap-4 overflow-x-auto pb-2 pt-1 [scrollbar-width:thin]"
           >
-            {previews.map((title, i) => (
+            <Link
+              to={previewCard.to}
+              className="group relative block min-w-[160px] max-w-[180px] flex-shrink-0 overflow-hidden rounded-xl border border-[rgba(196,79,216,0.5)] bg-[#1a0030] transition duration-300 hover:scale-105 hover:shadow-[0_0_28px_rgba(224,64,251,0.45)]"
+            >
               <div
-                key={title}
-                className="group relative min-w-[160px] max-w-[180px] flex-shrink-0 overflow-hidden rounded-xl border border-[rgba(196,79,216,0.5)] bg-[#1a0030] transition duration-300 hover:scale-105 hover:shadow-[0_0_28px_rgba(224,64,251,0.45)]"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
-                <div
-                  className="h-36 w-full bg-gradient-to-br from-[#9b30ff] via-[#b026d4] to-[#1a0030]"
-                  aria-hidden
-                />
-                <p className="absolute bottom-0 left-0 right-0 bg-[rgba(13,0,26,0.85)] px-2 py-2 text-center font-mono-label text-xs text-white">
-                  {title}
+                className="h-36 w-full bg-gradient-to-br from-[#9b30ff] via-[#b026d4] to-[#1a0030]"
+                aria-hidden
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-[rgba(13,0,26,0.92)] px-2 py-2">
+                <p className="text-center font-mono-label text-xs font-semibold text-white">
+                  {previewCard.title}
+                </p>
+                <p className="mt-1 text-center font-body text-[10px] leading-snug text-[#d4b8e0]">
+                  {previewCard.desc}
                 </p>
               </div>
-            ))}
+            </Link>
           </div>
         </div>
       </ScrollReveal>

@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import Profile from './pages/Profile'
 import About from './pages/About'
 import Projects from './pages/Projects'
+import GanttPage from './pages/GanttPage'
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/about" element={<About />} />
               <Route path="/projects" element={<Projects />} />
+              <Route path="/projects/gantt" element={<GanttPage />} />
             </Route>
           </Routes>
         </main>

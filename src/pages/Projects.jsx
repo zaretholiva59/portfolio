@@ -1,26 +1,11 @@
+import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
-import TaskManager from '../components/TaskManager'
 
 const portfolio = [
   {
-    title: 'Neo Commerce',
-    desc: 'Tienda headless con carrito en tiempo real y panel admin.',
-    stack: ['React', 'Node', 'Stripe'],
-  },
-  {
-    title: 'Aura Analytics',
-    desc: 'Dashboard de métricas con filtros guardados y export CSV.',
-    stack: ['TypeScript', 'D3', 'Vite'],
-  },
-  {
-    title: 'Studio Booking',
-    desc: 'Reservas para estudios creativos con recordatorios por email.',
-    stack: ['Next.js', 'PostgreSQL'],
-  },
-  {
-    title: 'Pulse Mobile',
-    desc: 'App híbrida para seguimiento de hábitos y streaks.',
-    stack: ['React Native', 'Firebase'],
+    title: 'Task Manager — Gantt',
+    desc: 'Gestión de proyectos con diagrama de Gantt interactivo',
+    stack: ['React', 'CSS', 'LocalStorage'],
   },
 ]
 
@@ -32,7 +17,7 @@ export default function Projects() {
           My Projects
         </h1>
         <p className="font-mono-label mb-10 text-sm text-[#d4b8e0]">
-          Portfolio selection · task flow below
+          Portfolio selection
         </p>
       </ScrollReveal>
 
@@ -61,19 +46,15 @@ export default function Projects() {
                 </span>
               ))}
             </div>
-            <button
-              type="button"
-              className="font-mono-label mt-4 w-full rounded-lg border border-[rgba(196,79,216,0.5)] py-2 text-sm text-[#c44fd8] transition hover:bg-[#c44fd8] hover:text-white hover:shadow-[0_0_20px_rgba(196,79,216,0.5)]"
+            <Link
+              to="/projects/gantt"
+              className="font-mono-label mt-4 flex w-full items-center justify-center rounded-lg border border-[rgba(196,79,216,0.5)] py-2 text-sm text-[#c44fd8] transition hover:bg-[#c44fd8] hover:text-white hover:shadow-[0_0_20px_rgba(196,79,216,0.5)]"
             >
               Ver más
-            </button>
+            </Link>
           </div>
         ))}
       </div>
-
-      <ScrollReveal>
-        <TaskManager />
-      </ScrollReveal>
     </div>
   )
 }
