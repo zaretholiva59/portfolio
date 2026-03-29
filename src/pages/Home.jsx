@@ -5,7 +5,7 @@ export default function Home() {
     <section className="relative z-10 flex min-h-[calc(100vh-56px)] flex-col px-4 pb-24 pt-8 md:px-8 lg:px-12">
       <div className="relative flex flex-1 flex-col items-center justify-center text-center">
         <div className="mx-auto w-full max-w-2xl">
-          <p className="font-script hero-anim-left delay-1 mb-2 text-2xl text-[#d4b8e0] md:text-3xl">
+          <p className="font-script hero-anim-left delay-1 mb-3 text-3xl text-[#d4b8e0] md:text-4xl lg:text-5xl">
             Hallo, i&apos;m
           </p>
           <h1 className="font-body hero-anim-left delay-2 mb-4 text-4xl font-bold text-white md:text-6xl lg:text-7xl">
@@ -22,8 +22,8 @@ export default function Home() {
               </span>
               Full Stack Developer
             </span>
-            <span className="font-mono-label text-xs text-[#d4b8e0]">
-              React · Node · Diseño UI
+            <span className="font-mono-label max-w-md text-xs leading-relaxed text-[#d4b8e0] md:text-sm">
+              HTML · CSS · JavaScript · Python · Django · Node · Next.js
             </span>
           </div>
 

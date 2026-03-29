@@ -2,15 +2,24 @@ import ScrollReveal from '../components/ScrollReveal'
 import SkillBar from '../components/SkillBar'
 import SoftSkillRing from '../components/SoftSkillRing'
 
-const tags = [
-  'React',
-  'TypeScript',
-  'Node.js',
+const languages = [
+  'HTML',
+  'CSS',
+  'JavaScript',
+  'Python',
+  'Django',
+  'Node',
+  'Next.js',
+]
+
+const tools = [
   'Vite',
-  'Tailwind',
-  'PostgreSQL',
+  'Tailwind CSS',
+  'Git',
   'Figma',
-  'REST',
+  'PostgreSQL',
+  'REST APIs',
+  'VS Code',
 ]
 
 const hard = [
@@ -28,6 +37,9 @@ const soft = [
   { label: 'Gestión del tiempo', p: 80 },
 ]
 
+const tagClass =
+  'rounded-full border border-[rgba(196,79,216,0.5)] bg-[#1a0030] px-4 py-1.5 font-mono-label text-xs text-[#d4b8e0] transition duration-300 hover:shadow-[0_0_20px_rgba(196,79,216,0.5)]'
+
 export default function About() {
   return (
     <div className="relative z-10 mx-auto max-w-6xl px-4 py-12 md:px-8">
@@ -42,15 +54,29 @@ export default function About() {
           aprender herramientas nuevas, iterar con feedback real y dejar cada
           proyecto más claro y usable que el anterior.
         </p>
-        <div className="mb-14 flex flex-wrap gap-2">
-          {tags.map((t) => (
-            <span
-              key={t}
-              className="rounded-full border border-[rgba(196,79,216,0.5)] bg-[#1a0030] px-4 py-1.5 font-mono-label text-xs text-[#d4b8e0] transition duration-300 hover:shadow-[0_0_20px_rgba(196,79,216,0.5)]"
-            >
-              {t}
-            </span>
-          ))}
+        <div className="mb-6">
+          <h3 className="font-mono-label mb-3 text-sm uppercase tracking-wider text-[#c44fd8]">
+            Lenguajes
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {languages.map((t) => (
+              <span key={t} className={tagClass}>
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="mb-14">
+          <h3 className="font-mono-label mb-3 text-sm uppercase tracking-wider text-[#c44fd8]">
+            Herramientas
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {tools.map((t) => (
+              <span key={t} className={tagClass}>
+                {t}
+              </span>
+            ))}
+          </div>
         </div>
       </ScrollReveal>
 

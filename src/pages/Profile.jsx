@@ -2,19 +2,20 @@ import { Link } from 'react-router-dom'
 import { useRef } from 'react'
 import ScrollReveal from '../components/ScrollReveal'
 
+const EMAIL = 'zareth55@gmail.com'
+
 const rows = [
   { label: 'Nombre', value: 'Zareth' },
   { label: 'Especialidad', value: 'Full Stack Developer' },
-  { label: 'Email', value: 'hello@zareth.dev' },
+  { label: 'Email', value: EMAIL },
   { label: 'Ubicación', value: 'Remoto / LATAM' },
   { label: 'Disponibilidad', value: 'Abierto a proyectos' },
-  { label: 'GitHub', value: 'github.com/zareth' },
+  { label: 'GitHub', value: 'github.com/zaretholiva59' },
 ]
 
 const contacts = [
-  { icon: 'fa-brands fa-github', text: 'GitHub: github.com/zareth' },
-  { icon: 'fa-solid fa-envelope', text: 'Email: hello@zareth.dev' },
-  { icon: 'fa-brands fa-linkedin', text: 'LinkedIn: linkedin.com/in/zareth' },
+  { id: 'gh', icon: 'fa-brands fa-github', text: `GitHub: github.com/zaretholiva59` },
+  { id: 'em', icon: 'fa-solid fa-envelope', text: `Email: ${EMAIL}` },
 ]
 
 const previewCard = {
@@ -53,7 +54,9 @@ export default function Profile() {
                     >
                       {row.label}
                     </td>
-                    <td className="px-4 py-3 font-semibold text-white">{row.value}</td>
+                    <td className="px-4 py-3 font-semibold text-white break-all">
+                      {row.value}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -68,14 +71,14 @@ export default function Profile() {
           <ul className="flex flex-col gap-4">
             {contacts.map((c) => (
               <li
-                key={c.text}
+                key={c.id}
                 className="flex items-center gap-3 rounded-lg border border-[rgba(196,79,216,0.5)] bg-[#1a0030] px-4 py-3 interactive-glow"
               >
                 <span
                   className={`${c.icon} text-xl text-[#e040fb]`}
                   aria-hidden
                 />
-                <span className="font-mono-label text-sm text-[#d4b8e0]">
+                <span className="font-mono-label text-sm text-[#d4b8e0] break-all">
                   {c.text}
                 </span>
               </li>
