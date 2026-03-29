@@ -4,8 +4,9 @@ import ScrollReveal from '../components/ScrollReveal'
 const portfolio = [
   {
     title: 'Task Manager — Gantt',
-    desc: 'Gestión de proyectos con diagrama de Gantt interactivo',
+    desc: 'Gestión de proyectos con diagrama de Gantt interactivo. CRUD completo, filtros y persistencia.',
     stack: ['React', 'CSS', 'LocalStorage'],
+    link: '/projects/gantt',
   },
 ]
 
@@ -47,7 +48,7 @@ export default function Projects() {
               ))}
             </div>
             <Link
-              to="/projects/gantt"
+              to={p.link}
               className="font-mono-label mt-4 flex w-full items-center justify-center rounded-lg border border-[rgba(196,79,216,0.5)] py-2 text-sm text-[#c44fd8] transition hover:bg-[#c44fd8] hover:text-white hover:shadow-[0_0_20px_rgba(196,79,216,0.5)]"
             >
               Ver más
