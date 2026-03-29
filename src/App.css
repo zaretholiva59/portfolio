@@ -147,27 +147,6 @@ body {
   }
 }
 
-/* --- Hero blob (non-blurred accent in hero) --- */
-.hero-blob {
-  width: min(380px, 55vw);
-  height: min(380px, 55vw);
-  background: linear-gradient(
-    135deg,
-    rgba(224, 64, 251, 0.5),
-    rgba(176, 38, 212, 0.35),
-    rgba(196, 79, 216, 0.25)
-  );
-  border: 1px solid var(--border-purple);
-  box-shadow: var(--glow);
-  animation: morphBlob 8s ease-in-out infinite;
-}
-
-.hero-anim-right {
-  animation: fadeInRight 0.8s ease forwards;
-  animation-delay: 0.2s;
-  opacity: 0;
-}
-
 .hero-anim-left {
   animation: fadeInLeft 0.8s ease forwards;
   opacity: 0;
@@ -190,17 +169,6 @@ body {
   from {
     opacity: 0;
     transform: translateX(-28px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(28px);
   }
   to {
     opacity: 1;
@@ -538,7 +506,7 @@ body {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem 1rem;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 /* --- Custom cursor --- */
