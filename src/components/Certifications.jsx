@@ -86,11 +86,10 @@ export default function Certifications() {
   return (
     <ScrollReveal className="mt-16" delay={0.06}>
       <h2 className="font-display mb-2 text-4xl text-white md:text-5xl">
-        Certificaciones
+      Credenciales y Certificaciones
       </h2>
       <p className="mb-8 max-w-2xl text-sm leading-relaxed text-[#d4b8e0] md:text-base">
-        Credenciales y constancias que respaldan la formación y la experiencia
-        registrada.
+        Evidencia documental que respalda mi trayectoria operativa y formación en sistemas.
       </p>
       <ul className="cert-grid cert-grid--4">
         {certs.map((c) => (
