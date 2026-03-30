@@ -104,8 +104,7 @@ export default function About() {
           Trayectoria profesional
         </h2>
         <p className="mb-2 max-w-3xl text-base leading-relaxed text-[#d4b8e0] md:text-lg">
-          Resumen alineado a constancias laborales y certificaciones. Sin
-          sobredimensionar cargos ni funciones.
+          Resumen basado en constancias laborales y certificaciones.
         </p>
         <ul className="career-timeline mb-10 max-w-3xl">
           <li className="career-timeline__item">
