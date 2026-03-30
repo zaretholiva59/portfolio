@@ -21,10 +21,6 @@ function AppContent() {
   }, [])
 
   useEffect(() => {
-    if (location.pathname !== '/') {
-      setActiveLink('')
-      return
-    }
     const handleScroll = () => {
       const scrollPosition = window.scrollY
       let currentSection = '#home'
@@ -46,7 +42,7 @@ function AppContent() {
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [location.pathname])
+  }, [])
 
   return (
     <>
