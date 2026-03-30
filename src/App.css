@@ -464,6 +464,52 @@ body.corporate-route {
   border-radius: 12px;
 }
 
+/* --- Sección Habilidades (Sobre mí): más aire arriba y bloque centrado --- */
+.about-skills-section {
+  margin-top: clamp(3rem, 8vw, 5.5rem);
+  padding-top: 1.25rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-skills-section__inner {
+  width: 100%;
+  max-width: min(56rem, 100%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-skills-grid {
+  display: grid;
+  gap: 2.75rem 1.5rem;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .about-skills-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 3.25rem;
+    align-items: start;
+  }
+}
+
+.about-skills-col {
+  width: 100%;
+  max-width: 22rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 1024px) {
+  .about-skills-col {
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 /* --- Skill bars --- */
 .skill-track {
   height: 10px;

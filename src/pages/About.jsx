@@ -173,27 +173,29 @@ export default function About() {
         </ul>
       </ScrollReveal>
 
-      <ScrollReveal delay={0.1}>
-        <h2 className="font-display mb-8 text-4xl text-white md:text-5xl">
-          Habilidades
-        </h2>
-        <div className="mb-12 grid gap-10 lg:grid-cols-2">
-          <div>
-            <h3 className="font-mono-label mb-4 text-sm uppercase tracking-wider text-[#c44fd8]">
-              Habilidades técnicas
-            </h3>
-            {hard.map((s) => (
-              <SkillBar key={s.label} label={s.label} percent={s.p} />
-            ))}
-          </div>
-          <div>
-            <h3 className="font-mono-label mb-4 text-sm uppercase tracking-wider text-[#c44fd8]">
-              Habilidades blandas
-            </h3>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-              {soft.map((s) => (
-                <SoftSkillRing key={s.label} label={s.label} percent={s.p} />
+      <ScrollReveal delay={0.1} className="about-skills-section">
+        <div className="about-skills-section__inner">
+          <h2 className="font-display mb-10 text-center text-4xl text-white md:mb-12 md:text-5xl">
+            Habilidades
+          </h2>
+          <div className="about-skills-grid mb-12">
+            <div className="about-skills-col">
+              <h3 className="font-mono-label mb-4 text-center text-sm uppercase tracking-wider text-[#c44fd8] lg:text-left">
+                Habilidades técnicas
+              </h3>
+              {hard.map((s) => (
+                <SkillBar key={s.label} label={s.label} percent={s.p} />
               ))}
+            </div>
+            <div className="about-skills-col">
+              <h3 className="font-mono-label mb-4 text-center text-sm uppercase tracking-wider text-[#c44fd8] lg:text-left">
+                Habilidades blandas
+              </h3>
+              <div className="about-skills-rings grid grid-cols-2 justify-items-center gap-6 sm:grid-cols-4 lg:grid-cols-2 lg:gap-5 xl:grid-cols-4">
+                {soft.map((s) => (
+                  <SoftSkillRing key={s.label} label={s.label} percent={s.p} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
