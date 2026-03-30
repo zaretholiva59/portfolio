@@ -17,7 +17,7 @@
   --font-logo: "Orbitron", sans-serif;
   --dot-grid: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.15) 1px,
+    rgba(255, 255, 255, 0.1) 1px,
     transparent 1px
   );
 }
@@ -555,30 +555,497 @@ body.corporate-route {
   transition: transform 0.15s ease-out;
 }
 
-/* --- Tarjetas de proyecto (jerarquía + hover) --- */
-.project-card-stagger {
+/* --- Página Proyectos: título --- */
+.projects-page-title {
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+/* --- Página Proyectos: grid y cards premium --- */
+.projects-page-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
+  gap: 2rem 2.25rem;
+  max-width: min(1240px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.portfolio-card-anim {
   opacity: 0;
-  animation: cardEnter 0.55s ease forwards;
-  border: 1px solid rgba(196, 79, 216, 0.32) !important;
-  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.22);
-  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.28s ease, border-color 0.25s ease;
+  animation: portfolioCardReveal 0.65s ease forwards;
 }
 
-.project-card-stagger:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 40px rgba(196, 79, 216, 0.18);
-  border-color: rgba(196, 79, 216, 0.55) !important;
-}
-
-@keyframes cardEnter {
+@keyframes portfolioCardReveal {
   from {
     opacity: 0;
-    transform: translateY(24px) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+  }
+}
+
+.portfolio-card-tilt {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.portfolio-card-gradient-border {
+  border-radius: 22px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.38) 0%,
+    rgba(196, 79, 216, 0.45) 42%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.portfolio-card-glass {
+  border-radius: 21px;
+  background: rgba(13, 0, 26, 0.42);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  padding: 1.5rem 1.65rem 1.65rem;
+  overflow: visible;
+}
+
+.portfolio-mockup {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  min-height: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 1.35rem;
+  box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.35),
+    0 8px 24px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+}
+
+.portfolio-mockup--gantt {
+  display: flex;
+  flex-direction: column;
+  padding: 0.65rem 0.75rem;
+  gap: 0.45rem;
+}
+
+.portfolio-mockup--gantt::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 0, 26, 0.88) 0%,
+    rgba(26, 0, 48, 0.92) 100%
+  );
+  z-index: 0;
+}
+
+.portfolio-mockup__gantt-ui {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.portfolio-mockup__gantt-header {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  width: 38%;
+}
+
+.portfolio-mockup__gantt-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.15rem;
+}
+
+.portfolio-mockup__gantt-label {
+  width: 22%;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(212, 184, 224, 0.25);
+  flex-shrink: 0;
+}
+
+.portfolio-mockup__gantt-track {
+  flex: 1;
+  height: 14px;
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-mockup__gantt-bar {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 8%;
+  width: 55%;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #eab308, #ca8a04);
+  box-shadow: 0 0 12px rgba(234, 179, 8, 0.45);
+}
+
+.portfolio-mockup__gantt-bar--2 {
+  left: 12%;
+  width: 40%;
+  background: linear-gradient(90deg, #c44fd8, #e040fb);
+}
+
+.portfolio-mockup__gantt-bar--3 {
+  left: 6%;
+  width: 70%;
+  opacity: 0.85;
+}
+
+.portfolio-mockup--ecom {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-mockup__ecom-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  filter: saturate(1.1);
+}
+
+.portfolio-mockup__ecom-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    145deg,
+    rgba(13, 0, 26, 0.75) 0%,
+    rgba(196, 79, 216, 0.35) 100%
+  );
+  z-index: 1;
+}
+
+.portfolio-mockup__ecom-chrome {
+  position: relative;
+  z-index: 2;
+  margin: 0.55rem 0.55rem 0;
+  padding: 0.35rem 0.5rem;
+  border-radius: 8px 8px 0 0;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.portfolio-mockup__ecom-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.portfolio-mockup__ecom-body {
+  position: relative;
+  z-index: 2;
+  margin: 0 0.55rem 0.55rem;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35rem;
+  align-content: end;
+  min-height: 0;
+}
+
+.portfolio-mockup__ecom-cell {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.portfolio-card-title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(1.2rem, 2.8vw, 1.45rem);
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin: 0 0 0.65rem;
+  overflow: visible;
+  text-wrap: balance;
+  max-width: none;
+}
+
+.portfolio-card-desc {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
+
+.portfolio-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.portfolio-card-tag {
+  border-radius: 6px;
+  border: 1px solid rgba(196, 79, 216, 0.38);
+  background: rgba(13, 0, 26, 0.65);
+  padding: 0.35rem 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #e9d5ff;
+  transition: transform 0.4s cubic-bezier(0.34, 1.45, 0.64, 1);
+}
+
+.portfolio-card-glass.group:hover .portfolio-card-tag:nth-child(1) {
+  transform: translateY(-5px);
+  transition-delay: 0s;
+}
+.portfolio-card-glass.group:hover .portfolio-card-tag:nth-child(2) {
+  transform: translateY(-5px);
+  transition-delay: 0.05s;
+}
+.portfolio-card-glass.group:hover .portfolio-card-tag:nth-child(3) {
+  transform: translateY(-5px);
+  transition-delay: 0.1s;
+}
+.portfolio-card-glass.group:hover .portfolio-card-tag:nth-child(4) {
+  transform: translateY(-5px);
+  transition-delay: 0.14s;
+}
+
+.portfolio-cta {
+  display: flex;
+  width: 100%;
+  margin-top: 1.35rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(196, 79, 216, 0.55);
+  background: transparent;
+  color: #f5e6ff;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.portfolio-cta:hover {
+  background: rgba(196, 79, 216, 0.95);
+  border-color: rgba(196, 79, 216, 0.95);
+  color: #fff;
+  box-shadow: 0 10px 32px rgba(196, 79, 216, 0.35);
+}
+
+/* --- Trayectoria profesional (About) --- */
+.career-timeline {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+}
+
+.career-timeline__item {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  gap: 0 1.15rem;
+  align-items: start;
+  margin-bottom: 1.75rem;
+}
+
+.career-timeline__item:last-child {
+  margin-bottom: 0;
+}
+
+.career-timeline__rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100%;
+}
+
+.career-timeline__dot {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  margin-top: 1.35rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  box-shadow: 0 0 0 4px rgba(13, 0, 26, 0.96), 0 0 20px rgba(246, 211, 101, 0.42);
+  z-index: 2;
+}
+
+.career-timeline__stem {
+  width: 2px;
+  flex: 1;
+  min-height: 1.25rem;
+  margin-top: 0.5rem;
+  border-radius: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(246, 211, 101, 0.5) 0%,
+    rgba(196, 79, 216, 0.22) 100%
+  );
+}
+
+.career-timeline__item:last-child .career-timeline__stem {
+  display: none;
+}
+
+.career-card-wrap {
+  border-radius: 20px;
+}
+
+.career-card-glass {
+  padding: 1.35rem 1.45rem 1.5rem;
+}
+
+.career-card-title {
+  font-size: clamp(1.05rem, 2.2vw, 1.28rem);
+  margin-bottom: 0.75rem;
+}
+
+.career-card-bullets {
+  list-style: none;
+  margin: 0 0 1.1rem;
+  padding: 0;
+}
+
+.career-card-bullets li {
+  position: relative;
+  padding-left: 1.05rem;
+  margin-bottom: 0.65rem;
+  font-size: 0.9375rem;
+  line-height: 1.62;
+  color: var(--text-muted);
+}
+
+.career-card-bullets li:last-child {
+  margin-bottom: 0;
+}
+
+.career-card-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #eab308, #fda085);
+  opacity: 0.9;
+}
+
+.career-card-tags {
+  margin-top: 0.15rem;
+}
+
+.career-skill-badge {
+  transition: transform 0.4s cubic-bezier(0.34, 1.45, 0.64, 1);
+}
+
+.career-card-glass.group:hover .career-skill-badge:nth-child(1) {
+  transform: translateY(-4px);
+}
+.career-card-glass.group:hover .career-skill-badge:nth-child(2) {
+  transform: translateY(-4px);
+  transition-delay: 0.04s;
+}
+.career-card-glass.group:hover .career-skill-badge:nth-child(3) {
+  transform: translateY(-4px);
+  transition-delay: 0.08s;
+}
+.career-card-glass.group:hover .career-skill-badge:nth-child(4) {
+  transform: translateY(-4px);
+  transition-delay: 0.12s;
+}
+.career-card-glass.group:hover .career-skill-badge:nth-child(5) {
+  transform: translateY(-4px);
+  transition-delay: 0.16s;
+}
+
+.career-insight-wrap {
+  border-radius: 20px;
+}
+
+.career-insight-glass {
+  padding: 1.2rem 1.35rem 1.35rem;
+}
+
+.career-insight-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.career-insight-icon {
+  color: #f6d365;
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.career-insight-heading {
+  flex: 1;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin: 0;
+}
+
+.career-insight-hint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  border: 1px solid rgba(196, 79, 216, 0.45);
+  font-size: 0.68rem;
+  font-weight: 700;
+  font-style: italic;
+  font-family: var(--font-body);
+  color: #d4b8e0;
+  cursor: help;
+}
+
+.career-insight-text {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .career-skill-badge {
+    transition: none;
+  }
+  .career-card-glass.group:hover .career-skill-badge:nth-child(n) {
+    transform: none;
+    transition-delay: 0s;
   }
 }
 

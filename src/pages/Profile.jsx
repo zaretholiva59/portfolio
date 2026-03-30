@@ -25,7 +25,7 @@ const previews = [
     to: '/projects/gantt',
   },
   {
-    title: 'E-commerce agora fresh',
+    title: 'Tienda integral (e-commerce)',
     desc: 'Catálogo, carrito y pago simulado.',
     to: '/projects/ecommerce',
   },

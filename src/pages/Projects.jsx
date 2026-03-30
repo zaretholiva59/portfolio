@@ -1,72 +1,164 @@
+import { useCallback, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
 
 const portfolio = [
   {
+    id: 'gantt',
     title: 'Gestión de proyectos (Gantt)',
     desc:
       'Sistema de gestión de proyectos con visualización dinámica de tiempos, hitos y dependencias. Optimizado para la toma de decisiones en equipos técnicos.',
     stack: ['React', 'CSS', 'localStorage'],
     link: '/projects/gantt',
-    gradient: 'from-[#57534e] via-[#ca8a04] to-[#1a0030]',
   },
   {
-    title: 'E-commerce full stack (simulado)',
+    id: 'ecom',
+    title: 'Tienda integral (e-commerce) de alto rendimiento',
     desc:
-      'Tienda con catálogo filtrable, administración de productos (CRUD), carrito persistente y pasarela de pago con validación. Estilo retail limpio e imágenes de calidad.',
+      'Catálogo filtrable, administración de productos (CRUD), carrito persistente y pasarela de pago con validación. Experiencia retail limpia e imágenes de calidad.',
     stack: ['React', 'localStorage', 'Unsplash'],
     link: '/projects/ecommerce',
-    gradient: 'from-[#fef9c3] via-[#ca8a04] to-[#1a0030]',
   },
 ]
 
+function MockupGantt() {
+  return (
+    <div className="portfolio-mockup portfolio-mockup--gantt" aria-hidden>
+      <div className="portfolio-mockup__gantt-ui">
+        <div className="portfolio-mockup__gantt-header" />
+        <div className="portfolio-mockup__gantt-row">
+          <div className="portfolio-mockup__gantt-label" />
+          <div className="portfolio-mockup__gantt-track">
+            <div className="portfolio-mockup__gantt-bar" />
+          </div>
+        </div>
+        <div className="portfolio-mockup__gantt-row">
+          <div className="portfolio-mockup__gantt-label" />
+          <div className="portfolio-mockup__gantt-track">
+            <div className="portfolio-mockup__gantt-bar portfolio-mockup__gantt-bar--2" />
+          </div>
+        </div>
+        <div className="portfolio-mockup__gantt-row">
+          <div className="portfolio-mockup__gantt-label" />
+          <div className="portfolio-mockup__gantt-track">
+            <div className="portfolio-mockup__gantt-bar portfolio-mockup__gantt-bar--3" />
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function MockupEcom() {
+  return (
+    <div className="portfolio-mockup portfolio-mockup--ecom" aria-hidden>
+      <img
+        className="portfolio-mockup__ecom-photo"
+        src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=900&q=85"
+        alt=""
+        loading="lazy"
+      />
+      <div className="portfolio-mockup__ecom-overlay" />
+      <div className="portfolio-mockup__ecom-chrome">
+        <span className="portfolio-mockup__ecom-dot" />
+        <span className="portfolio-mockup__ecom-dot" />
+        <span className="portfolio-mockup__ecom-dot" />
+      </div>
+      <div className="portfolio-mockup__ecom-body">
+        <div className="portfolio-mockup__ecom-cell" />
+        <div className="portfolio-mockup__ecom-cell" />
+        <div className="portfolio-mockup__ecom-cell" />
+        <div className="portfolio-mockup__ecom-cell" />
+        <div className="portfolio-mockup__ecom-cell" />
+        <div className="portfolio-mockup__ecom-cell" />
+      </div>
+    </div>
+  )
+}
+
+function PortfolioCard({ item, index }) {
+  const ref = useRef(null)
+  const [tilt, setTilt] = useState({
+    transform:
+      'perspective(1100px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)',
+    transition: 'transform 0.45s cubic-bezier(0.23, 1, 0.32, 1)',
+  })
+
+  const onMove = useCallback((e) => {
+    const el = ref.current
+    if (!el) return
+    const r = el.getBoundingClientRect()
+    const x = e.clientX - r.left
+    const y = e.clientY - r.top
+    const px = (x / r.width - 0.5) * 2
+    const py = (y / r.height - 0.5) * 2
+    const max = 7
+    const rotateY = px * max
+    const rotateX = -py * max
+    setTilt({
+      transform: `perspective(1100px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.018,1.018,1.018)`,
+      transition: 'transform 0.08s linear',
+    })
+  }, [])
+
+  const onLeave = useCallback(() => {
+    setTilt({
+      transform:
+        'perspective(1100px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)',
+      transition: 'transform 0.45s cubic-bezier(0.23, 1, 0.32, 1)',
+    })
+  }, [])
+
+  return (
+    <div
+      className="portfolio-card-anim"
+      style={{ animationDelay: `${index * 0.14}s` }}
+    >
+      <div
+        ref={ref}
+        className="portfolio-card-tilt"
+        style={tilt}
+        onMouseMove={onMove}
+        onMouseLeave={onLeave}
+      >
+        <div className="portfolio-card-gradient-border">
+          <div className="portfolio-card-glass group">
+            {item.id === 'gantt' ? <MockupGantt /> : <MockupEcom />}
+            <h2 className="portfolio-card-title">{item.title}</h2>
+            <p className="portfolio-card-desc">{item.desc}</p>
+            <div className="portfolio-card-tags">
+              {item.stack.map((s) => (
+                <span key={s} className="portfolio-card-tag">
+                  {s}
+                </span>
+              ))}
+            </div>
+            <Link to={item.link} className="portfolio-cta">
+              Ver proyecto
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Projects() {
   return (
-    <div className="relative z-10 mx-auto max-w-6xl px-4 py-14 md:px-10 md:py-16">
+    <div className="relative z-10 mx-auto max-w-[1320px] px-4 py-16 md:px-10 md:py-20">
       <ScrollReveal>
-        <h1 className="font-display mb-3 text-4xl text-white md:text-6xl">
+        <h1 className="projects-page-title font-display mb-4 text-4xl text-white md:text-6xl">
           Proyectos
         </h1>
-        <p className="font-mono-label mb-12 max-w-2xl text-sm leading-relaxed text-[#d4b8e0] md:text-base">
+        <p className="font-mono-label mb-14 max-w-2xl text-sm leading-relaxed text-[#d4b8e0] md:text-base">
           Selección de trabajos y demos interactivas. Cada tarjeta enlaza a una
           experiencia completa dentro del portafolio.
         </p>
       </ScrollReveal>
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+      <div className="projects-page-grid">
         {portfolio.map((p, i) => (
-          <div
-            key={p.title}
-            className="project-card-stagger rounded-2xl bg-[#1a0030] p-6 md:p-7"
-            style={{ animationDelay: `${i * 0.12}s` }}
-          >
-            <div
-              className={`mb-5 h-32 w-full rounded-xl bg-gradient-to-br ${p.gradient} shadow-inner`}
-              aria-hidden
-            />
-            <h2 className="font-display text-xl leading-snug text-white md:text-2xl">
-              {p.title}
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-[#d4b8e0] md:text-[0.95rem]">
-              {p.desc}
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {p.stack.map((s) => (
-                <span
-                  key={s}
-                  className="rounded-md border border-[rgba(196,79,216,0.4)] bg-[#0d001a] px-2.5 py-1 font-mono-label text-[10px] uppercase tracking-wide text-[#e040fb]"
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
-            <Link
-              to={p.link}
-              className="font-mono-label mt-6 flex w-full items-center justify-center rounded-xl border border-[rgba(196,79,216,0.45)] py-3 text-sm font-semibold text-[#c44fd8] transition duration-200 hover:border-[#c44fd8] hover:bg-[#c44fd8] hover:text-white hover:shadow-[0_0_24px_rgba(196,79,216,0.35)]"
-            >
-              Ver proyecto
-            </Link>
-          </div>
+          <PortfolioCard key={p.id} item={p} index={i} />
         ))}
       </div>
     </div>
