@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useRef } from 'react'
 import ScrollReveal from '../components/ScrollReveal'
+import Certifications from '../components/Certifications'
 
 const EMAIL = 'zareth55@gmail.com'
 
@@ -93,6 +94,8 @@ export default function Profile() {
           </ul>
         </ScrollReveal>
       </div>
+
+      <Certifications />
 
       <ScrollReveal className="mt-16">
         <h3 className="font-display mb-5 inline-block rounded-t-xl bg-[#c44fd8] px-5 py-2.5 text-xl text-white">
