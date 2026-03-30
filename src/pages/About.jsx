@@ -40,33 +40,27 @@ const soft = [
 const tagClass =
   'rounded-full border border-[rgba(196,79,216,0.5)] bg-[#1a0030] px-4 py-1.5 font-mono-label text-xs text-[#d4b8e0] transition duration-300 hover:shadow-[0_0_20px_rgba(196,79,216,0.5)]'
 
-const careerRoles = [
-  {
-    company: 'E&L Consultores S.A.C.',
-    roleTitle: 'Implementadora TI / asistente de operaciones',
-    period: 'Nov 2024 – Dic 2025',
-    bullets: [
-      'Configuración de equipos TI en campo y elaboración de mapas topológicos de redes (MINSA).',
-      'Gestión de documentación técnica y dossiers — proyecto Escuelas del Bicentenario (MINEDU).',
-      'Coordinación entre áreas de operaciones, producción y telecomunicaciones.',
-    ],
-    badges: ['MINSA', 'MINEDU', 'Redes', 'Telecomunicaciones', 'Documentación'],
-  },
-  {
-    company: 'Sodimac Perú',
-    roleTitle: 'Gestión de datos y atención (call center)',
-    period: '2018 – 2024',
-    bullets: [
-      'Gestión de tickets y reclamos en Salesforce CRM con seguimiento hasta cierre.',
-      'Control de inventario y stock de productos top 10/30 en sistema.',
-      'Coordinación de envíos con almacén y registro de datos de productos.',
-    ],
-    badges: ['Salesforce', 'CRM', 'Inventario', 'Atención al cliente'],
-  },
-]
+const CERT_LABORAL_EL = '/certificates/certificado-laboral-e-l-technology.pdf'
 
-const careerInsight =
-  'Mi experiencia previa me ha dotado de una capacidad excepcional para entender los procesos de negocio y las necesidades del usuario final, lo que me permite construir software que no solo funciona, sino que resuelve problemas reales.'
+const careerElTechnology = {
+  company: 'E&L Technology',
+  roleTitle: 'Técnico TI / asistente de operaciones',
+  period: '2024 – 2025',
+  bullets: [
+    'Implementación y configuración de equipos multimedia y despliegue técnico en campo.',
+    'Creación y mantenimiento de mapas topológicos de redes (MINSA), documentando nodos y puntos críticos.',
+    'Gestión de dossiers y documentación técnica bajo normativa para el proyecto Escuelas Bicentenario (MINEDU).',
+  ],
+  badges: ['MINSA', 'MINEDU', 'Redes', 'Documentación'],
+}
+
+const careerSodimac = {
+  company: 'Sodimac Perú',
+  period: '2018 – 2024',
+  summary:
+    '6 años liderando la gestión de inventarios críticos y resolución de incidencias mediante Salesforce CRM, optimizando el flujo de datos entre almacén y cliente final.',
+  badges: ['Salesforce', 'Inventario', 'CRM'],
+}
 
 export default function About() {
   return (
@@ -76,11 +70,9 @@ export default function About() {
           Sobre mí
         </h2>
         <p className="mb-8 max-w-3xl text-lg leading-relaxed text-[#d4b8e0]">
-          Soy desarrolladora full stack con pasión por interfaces cuidadas y código
-          mantenible. Disfruto transformar ideas en productos web rápidos y
-          accesibles, colaborando de forma cercana con diseño y negocio. Me mueve
-          aprender herramientas nuevas, iterar con feedback real y dejar cada
-          proyecto más claro y usable que el anterior.
+          Desarrolladora de sistemas con experiencia previa en operaciones TI y
+          gestión de datos. Trabajo con código y interfaces con criterio técnico y
+          cercanía a las necesidades reales de uso.
         </p>
         <div className="mb-6">
           <h3 className="font-mono-label mb-3 text-sm uppercase tracking-wider text-[#c44fd8]">
@@ -113,65 +105,85 @@ export default function About() {
           Trayectoria profesional
         </h2>
         <p className="mb-2 max-w-3xl text-base leading-relaxed text-[#d4b8e0] md:text-lg">
-          Trayectoria en{' '}
-          <span className="text-white/95">operaciones, datos y TI en campo</span>
-          : experiencia que hoy orienta mi{' '}
-          <span className="text-[#eab308]/90">desarrollo de software</span>
-          —procesos de negocio, sistemas y foco en quien usa la herramienta.
+          Resumen alineado a constancias laborales y certificaciones. Sin
+          sobredimensionar cargos ni funciones.
         </p>
         <ul className="career-timeline mb-10 max-w-3xl">
-          {careerRoles.map((role) => (
-            <li key={role.company} className="career-timeline__item">
-              <div className="career-timeline__rail" aria-hidden>
-                <span className="career-timeline__dot" />
-                <span className="career-timeline__stem" />
-              </div>
-              <div className="portfolio-card-gradient-border career-card-wrap">
-                <div className="portfolio-card-glass group career-card-glass">
-                  <h3 className="portfolio-card-title career-card-title career-card-company">
-                    {role.company}
-                  </h3>
-                  <p className="career-card-role">{role.roleTitle}</p>
-                  <p className="career-card-period">{role.period}</p>
-                  <ul className="career-card-bullets">
-                    {role.bullets.map((line, i) => (
-                      <li key={`${role.company}-${i}`}>{line}</li>
-                    ))}
-                  </ul>
-                  <div className="portfolio-card-tags career-card-tags">
-                    {role.badges.map((b) => (
-                      <span key={b} className="portfolio-card-tag career-skill-badge">
-                        {b}
-                      </span>
-                    ))}
-                  </div>
+          <li className="career-timeline__item">
+            <div className="career-timeline__rail" aria-hidden>
+              <span className="career-timeline__dot" />
+              <span className="career-timeline__stem" />
+            </div>
+            <div className="portfolio-card-gradient-border career-card-wrap">
+              <div className="portfolio-card-glass group career-card-glass">
+                <h3 className="portfolio-card-title career-card-title career-card-company">
+                  {careerElTechnology.company}
+                </h3>
+                <p className="career-card-role">{careerElTechnology.roleTitle}</p>
+                <p className="career-card-period">{careerElTechnology.period}</p>
+                <ul className="career-card-bullets">
+                  {careerElTechnology.bullets.map((line, i) => (
+                    <li key={`el-${i}`}>{line}</li>
+                  ))}
+                </ul>
+                <div className="portfolio-card-tags career-card-tags">
+                  {careerElTechnology.badges.map((b) => (
+                    <span key={b} className="portfolio-card-tag career-skill-badge">
+                      {b}
+                    </span>
+                  ))}
                 </div>
               </div>
-            </li>
-          ))}
-        </ul>
-        <div className="portfolio-card-gradient-border career-insight-wrap max-w-3xl">
-          <aside
-            className="portfolio-card-glass career-insight-glass"
-            aria-labelledby="career-insight-heading"
-          >
-            <div className="career-insight-head">
-              <span className="career-insight-icon" aria-hidden>
-                ◈
-              </span>
-              <h3 id="career-insight-heading" className="career-insight-heading">
-                Por qué esto me hace mejor desarrolladora
-              </h3>
-              <span
-                className="career-insight-hint"
-                title={careerInsight}
-                tabIndex={0}
-              >
-                i
-              </span>
             </div>
-            <p className="career-insight-text">{careerInsight}</p>
-          </aside>
+          </li>
+          <li className="career-timeline__item">
+            <div className="career-timeline__rail" aria-hidden>
+              <span className="career-timeline__dot" />
+              <span className="career-timeline__stem" />
+            </div>
+            <div className="portfolio-card-gradient-border career-card-wrap">
+              <div className="portfolio-card-glass group career-card-glass">
+                <h3 className="portfolio-card-title career-card-title career-card-company">
+                  {careerSodimac.company}
+                </h3>
+                <p className="career-card-period career-card-period--solo">
+                  {careerSodimac.period}
+                </p>
+                <p className="career-summary">{careerSodimac.summary}</p>
+                <div className="portfolio-card-tags career-card-tags">
+                  {careerSodimac.badges.map((b) => (
+                    <span key={b} className="portfolio-card-tag career-skill-badge">
+                      {b}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <div className="portfolio-card-gradient-border career-cert-block max-w-3xl">
+          <div className="portfolio-card-glass career-cert-inner">
+            <h3 className="career-cert-title">Certificado laboral (E&L Technology)</h3>
+            <p className="career-cert-lead">
+              Mismo documento que respalda el periodo 2024–2025 descrito arriba.
+              Si no se visualiza en el navegador, usa el enlace para abrir el PDF.
+            </p>
+            <div className="career-cert-frame">
+              <iframe
+                title="Certificado laboral E&L Technology"
+                src={`${CERT_LABORAL_EL}#view=FitH`}
+              />
+            </div>
+            <a
+              className="career-cert-pdf-link"
+              href={CERT_LABORAL_EL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Abrir certificado en PDF
+            </a>
+          </div>
         </div>
       </ScrollReveal>
 

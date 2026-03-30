@@ -1,20 +1,14 @@
 import ScrollReveal from './ScrollReveal'
 
+const CERT_LABORAL = '/certificates/certificado-laboral-e-l-technology.pdf'
+
 const certs = [
-  {
-    id: 'django-orm',
-    title: 'Python / Django ORM',
-    issuer: 'Formación técnica',
-    year: '2024',
-    verifyHref: null,
-    brand: 'python',
-  },
   {
     id: 'laboral-el',
     title: 'Certificado laboral TI',
-    issuer: 'E&L Consultores S.A.C.',
-    year: '2025',
-    verifyHref: null,
+    issuer: 'E&L Technology',
+    year: '2024–2025',
+    verifyHref: CERT_LABORAL,
     brand: 'company',
   },
   {
@@ -72,14 +66,6 @@ function CertLogo({ brand }) {
   if (brand === 'cisco') {
     return <LogoCisco className="cert-logo cert-logo--cisco" />
   }
-  if (brand === 'python') {
-    return (
-      <span
-        className="cert-logo cert-logo--python fa-brands fa-python"
-        aria-hidden
-      />
-    )
-  }
   if (brand === 'company') {
     return (
       <span
@@ -102,10 +88,10 @@ export default function Certifications() {
         Certificaciones
       </h2>
       <p className="mb-8 max-w-2xl text-sm leading-relaxed text-[#d4b8e0] md:text-base">
-        Formación y respaldo documental en tecnologías que aplico en proyectos
-        reales.
+        Credenciales y constancias que respaldan la formación y la experiencia
+        registrada.
       </p>
-      <ul className="cert-grid">
+      <ul className="cert-grid cert-grid--4">
         {certs.map((c) => (
           <li key={c.id}>
             <article className="cert-card">
@@ -130,8 +116,7 @@ export default function Certifications() {
         ))}
       </ul>
       <p className="cert-learning-note">
-        Comprometida con el aprendizaje continuo y la actualización constante en
-        las últimas tecnologías del sector.
+        Actualización continua en herramientas y buenas prácticas del sector.
       </p>
     </ScrollReveal>
   )

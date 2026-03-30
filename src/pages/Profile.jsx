@@ -7,7 +7,7 @@ const EMAIL = 'zareth55@gmail.com'
 
 const rows = [
   { label: 'Nombre', value: 'Zareth Oliva' },
-  { label: 'Especialidad', value: 'Desarrolladora full stack' },
+  { label: 'Especialidad', value: 'Desarrolladora de sistemas · Operaciones TI' },
   { label: 'Correo', value: EMAIL },
   { label: 'Ubicación', value: 'Callao, Lima, Perú' },
   { label: 'Disponibilidad', value: 'Abierta a proyectos' },
@@ -24,13 +24,13 @@ const previews = [
     title: 'Gestión de proyectos (Gantt)',
     desc: 'Diagrama de Gantt, CRUD y filtros.',
     to: '/projects/gantt',
-    variant: 'default',
+    visual: 'gantt',
   },
   {
     title: 'Comercio electrónico integral',
     desc: 'Catálogo, carrito y pago simulado.',
     to: '/projects/ecommerce',
-    variant: 'ecom',
+    visual: 'ecom',
   },
 ]
 
@@ -120,10 +120,10 @@ export default function Profile() {
               <Link
                 key={card.to}
                 to={card.to}
-                className={`profile-preview-card ${card.variant === 'ecom' ? 'profile-preview-card--ecom' : ''}`}
+                className={`profile-preview-card ${card.visual === 'ecom' ? 'profile-preview-card--ecom' : 'profile-preview-card--gantt'}`}
               >
                 <div
-                  className="profile-preview-card__visual"
+                  className={`profile-preview-card__visual profile-preview-card__visual--${card.visual}`}
                   aria-hidden
                 />
                 <div className="profile-preview-card__caption">

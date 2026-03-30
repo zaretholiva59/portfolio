@@ -733,21 +733,36 @@ body.corporate-route {
   gap: 0.45rem;
 }
 
-.portfolio-mockup--gantt::before {
-  content: "";
+.portfolio-mockup__gantt-photo {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(13, 0, 26, 0.88) 0%,
-    rgba(26, 0, 48, 0.92) 100%
-  );
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   z-index: 0;
+}
+
+.portfolio-mockup__gantt-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+      145deg,
+      rgba(13, 0, 26, 0.88) 0%,
+      rgba(88, 28, 135, 0.55) 45%,
+      rgba(180, 83, 9, 0.25) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(13, 0, 26, 0.5) 0%,
+      rgba(26, 0, 48, 0.75) 100%
+    );
+  pointer-events: none;
 }
 
 .portfolio-mockup__gantt-ui {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -828,10 +843,11 @@ body.corporate-route {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    145deg,
-    rgba(13, 0, 26, 0.75) 0%,
-    rgba(196, 79, 216, 0.35) 100%
-  );
+      145deg,
+      rgba(13, 0, 26, 0.72) 0%,
+      rgba(196, 79, 216, 0.38) 50%,
+      rgba(180, 83, 9, 0.2) 100%
+    );
   z-index: 1;
 }
 
@@ -891,8 +907,21 @@ body.corporate-route {
   overflow-wrap: anywhere;
 }
 
-.portfolio-card-title--ecom {
-  padding-right: 1rem;
+.portfolio-card-pill {
+  display: inline-flex;
+  align-self: flex-start;
+  margin-bottom: 0.65rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #fde68a;
+  border: 1px solid rgba(246, 211, 101, 0.48);
+  background: rgba(13, 0, 26, 0.55);
+  box-shadow: 0 0 0 1px rgba(196, 79, 216, 0.15);
 }
 
 .portfolio-card-desc {
@@ -906,7 +935,8 @@ body.corporate-route {
 .portfolio-card-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.55rem 0.65rem;
+  row-gap: 0.55rem;
 }
 
 .portfolio-card-tag {
@@ -1058,6 +1088,77 @@ body.corporate-route {
   color: rgba(246, 211, 101, 0.88);
 }
 
+.career-card-period--solo {
+  margin-bottom: 0.65rem;
+}
+
+.career-summary {
+  margin: 0 0 1rem;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.career-cert-block {
+  border-radius: 20px;
+  margin-top: 0.5rem;
+}
+
+.career-cert-inner {
+  padding: 1.35rem 1.45rem 1.5rem;
+}
+
+.career-cert-title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin: 0 0 0.5rem;
+}
+
+.career-cert-lead {
+  margin: 0 0 1rem;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.career-cert-frame {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(196, 79, 216, 0.35);
+  background: rgba(0, 0, 0, 0.35);
+  margin-bottom: 1rem;
+  min-height: 280px;
+}
+
+.career-cert-frame iframe {
+  display: block;
+  width: 100%;
+  height: min(52vh, 420px);
+  border: 0;
+}
+
+.career-cert-pdf-link {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fde68a;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(246, 211, 101, 0.45);
+  padding-bottom: 2px;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.career-cert-pdf-link:hover {
+  color: #fff;
+  border-color: rgba(246, 211, 101, 0.85);
+}
+
 .career-card-bullets {
   list-style: none;
   margin: 0 0 1.1rem;
@@ -1192,8 +1293,19 @@ body.corporate-route {
   max-width: 1100px;
 }
 
+.cert-grid--4 {
+  max-width: 1180px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 960px) {
+  .cert-grid--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 900px) {
-  .cert-grid {
+  .cert-grid:not(.cert-grid--4) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -1397,7 +1509,7 @@ body.corporate-route {
 .profile-carousel {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 1rem;
   max-width: 100%;
 }
 
@@ -1405,11 +1517,12 @@ body.corporate-route {
   flex: 1;
   min-width: 0;
   display: flex;
-  gap: 1rem;
+  gap: 1.15rem;
   overflow-x: auto;
-  padding: 0.65rem 0.25rem 0.85rem;
+  padding: 0.75rem 0.5rem 0.9rem;
   scroll-behavior: smooth;
   scrollbar-width: thin;
+  scroll-padding-inline: 12px;
 }
 
 .profile-carousel__btn {
@@ -1432,6 +1545,12 @@ body.corporate-route {
 @media (min-width: 768px) {
   .profile-carousel__btn {
     display: flex;
+  }
+
+  .profile-carousel__track {
+    padding-left: 0.35rem;
+    padding-right: 0.35rem;
+    scroll-padding-inline: 8px;
   }
 }
 
@@ -1466,6 +1585,7 @@ body.corporate-route {
 }
 
 .profile-preview-card__visual {
+  position: relative;
   height: 9rem;
   width: 100%;
   border-radius: 20px 20px 0 0;
@@ -1476,6 +1596,43 @@ body.corporate-route {
     #b026d4 45%,
     #0d001a 100%
   );
+}
+
+.profile-preview-card__visual--gantt {
+  background-image: url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+.profile-preview-card__visual--gantt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(13, 0, 26, 0.82) 0%,
+    rgba(88, 28, 135, 0.45) 55%,
+    rgba(180, 83, 9, 0.2) 100%
+  );
+  pointer-events: none;
+}
+
+.profile-preview-card__visual--ecom {
+  background-image: url("https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+.profile-preview-card__visual--ecom::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    145deg,
+    rgba(13, 0, 26, 0.78) 0%,
+    rgba(196, 79, 216, 0.35) 100%
+  );
+  pointer-events: none;
 }
 
 .profile-preview-card__caption {
@@ -1500,9 +1657,14 @@ body.corporate-route {
   padding-right: 0.15rem;
 }
 
+.profile-preview-card--ecom .profile-preview-card__title,
+.profile-preview-card--gantt .profile-preview-card__title {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 .profile-preview-card--ecom .profile-preview-card__title {
   padding-right: 1rem;
-  padding-left: 0.35rem;
 }
 
 .profile-preview-card__desc {

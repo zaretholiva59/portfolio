@@ -2,20 +2,25 @@ import { useCallback, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
 
+const GANTT_PREVIEW_IMG =
+  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=85'
+
 const portfolio = [
   {
     id: 'gantt',
     title: 'Gestión de proyectos (Gantt)',
+    roleBadge: 'Full stack',
     desc:
-      'Sistema de gestión de proyectos con visualización dinámica de tiempos, hitos y dependencias. Pensado para apoyar decisiones en equipos técnicos.',
+      'Vista tipo diagrama de Gantt con tareas, fechas y estados. Datos en el navegador.',
     stack: ['React', 'CSS', 'Almacenamiento local'],
     link: '/projects/gantt',
   },
   {
     id: 'ecom',
     title: 'Comercio electrónico integral',
+    roleBadge: 'Full stack',
     desc:
-      'Catálogo filtrable, administración de productos (altas y bajas), carrito persistente y pasarela de pago con validación. Experiencia de tienda clara e imágenes de calidad.',
+      'Catálogo, carrito y flujo de pago simulado. Administración básica de productos.',
     stack: ['React', 'Almacenamiento local', 'Imágenes de referencia'],
     link: '/projects/ecommerce',
   },
@@ -24,6 +29,13 @@ const portfolio = [
 function MockupGantt() {
   return (
     <div className="portfolio-mockup portfolio-mockup--gantt" aria-hidden>
+      <img
+        className="portfolio-mockup__gantt-photo"
+        src={GANTT_PREVIEW_IMG}
+        alt=""
+        loading="lazy"
+      />
+      <div className="portfolio-mockup__gantt-scrim" />
       <div className="portfolio-mockup__gantt-ui">
         <div className="portfolio-mockup__gantt-header" />
         <div className="portfolio-mockup__gantt-row">
@@ -121,11 +133,8 @@ function PortfolioCard({ item }) {
         <div className="portfolio-card-gradient-border">
           <div className="portfolio-card-glass group">
             {item.id === 'gantt' ? <MockupGantt /> : <MockupEcom />}
-            <h2
-              className={`portfolio-card-title ${item.id === 'ecom' ? 'portfolio-card-title--ecom' : ''}`}
-            >
-              {item.title}
-            </h2>
+            <span className="portfolio-card-pill">{item.roleBadge}</span>
+            <h2 className="portfolio-card-title">{item.title}</h2>
             <p className="portfolio-card-desc">{item.desc}</p>
             <div className="portfolio-card-tags">
               {item.stack.map((s) => (
@@ -152,8 +161,8 @@ export default function Projects() {
           Proyectos
         </h1>
         <p className="font-mono-label mb-14 max-w-2xl text-sm leading-relaxed text-[#d4b8e0] md:text-base">
-          Selección de trabajos y demos interactivas. Cada tarjeta enlaza a una
-          experiencia completa dentro del portafolio.
+          Demos técnicas enlazadas a este portafolio. Cada una abre la experiencia
+          completa en una vista aparte.
         </p>
       </ScrollReveal>
 
