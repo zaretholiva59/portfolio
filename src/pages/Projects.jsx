@@ -157,13 +157,9 @@ export default function Projects() {
   return (
     <div className="relative z-10 mx-auto max-w-[1320px] px-4 py-16 md:px-10 md:py-20">
       <ScrollReveal delay={0}>
-        <h1 className="projects-page-title font-display mb-4 text-4xl text-white md:text-6xl">
+        <h1 className="projects-page-title font-display mb-14 text-4xl text-white md:text-6xl">
           Proyectos
         </h1>
-        <p className="font-mono-label mb-14 max-w-2xl text-sm leading-relaxed text-[#d4b8e0] md:text-base">
-          Demos técnicas enlazadas a este portafolio. Cada una abre la experiencia
-          completa en una vista aparte.
-        </p>
       </ScrollReveal>
 
       <div className="projects-page-grid">
