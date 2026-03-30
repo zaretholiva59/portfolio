@@ -7,7 +7,7 @@ const certs = [
   {
     id: 'laboral-el',
     title: 'Certificado laboral TI',
-    issuer: 'E&L Consultores',
+    issuer: 'E&L Technology',
     year: '2024–2025',
     verifyHref: CERT_LABORAL,
     brand: 'company',
