@@ -283,9 +283,20 @@ function PortfolioCard({ item }) {
                 </span>
               ))}
             </div>
-            <Link to={item.link} className="portfolio-cta">
-              Ver proyecto
-            </Link>
+            {item.link?.startsWith('http') ? (
+              <a
+                href={item.link}
+                className="portfolio-cta"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver proyecto
+              </a>
+            ) : (
+              <Link to={item.link} className="portfolio-cta">
+                Ver proyecto
+              </Link>
+            )}
           </div>
         </div>
       </div>

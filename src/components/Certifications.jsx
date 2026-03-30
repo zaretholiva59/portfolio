@@ -2,6 +2,7 @@ import ScrollReveal from './ScrollReveal'
 import { CERTIFICADO_LABORAL_EL_URL } from '../constants/staticDocs'
 
 const CERT_LABORAL = CERTIFICADO_LABORAL_EL_URL
+const BASE_URL = import.meta.env.BASE_URL || '/'
 
 const certs = [
   {
@@ -17,7 +18,7 @@ const certs = [
     title: 'Python Essentials (PCAP)',
     issuer: 'Cisco Networking Academy',
     year: 'Feb. 2023',
-    verifyHref: '/certificates/pcap-python-essentials-cisco.pdf',
+    verifyHref: `${BASE_URL}certificates/pcap-python-essentials-cisco.pdf`,
     brand: 'cisco',
   },
   {
@@ -25,7 +26,7 @@ const certs = [
     title: 'NoSQL con MongoDB',
     issuer: 'Código Facilito',
     year: 'Mar. 2024',
-    verifyHref: '/certificates/nosql-mongodb-codigo-facilito.pdf',
+    verifyHref: `${BASE_URL}certificates/nosql-mongodb-codigo-facilito.pdf`,
     brand: 'codigo-facilito',
   },
   {
@@ -33,7 +34,7 @@ const certs = [
     title: 'Git profesional',
     issuer: 'Código Facilito',
     year: 'Mar. 2024',
-    verifyHref: '/certificates/git-profesional-codigo-facilito.pdf',
+    verifyHref: `${BASE_URL}certificates/git-profesional-codigo-facilito.pdf`,
     brand: 'codigo-facilito',
   },
 ]
@@ -86,7 +87,7 @@ export default function Certifications() {
   return (
     <ScrollReveal className="mt-16" delay={0.06}>
       <h2 className="font-display mb-2 text-4xl text-white md:text-5xl">
-        Credenciales y Certificaciones
+        Credenciales y Certificaciones Verificadas
       </h2>
       <p className="mb-8 max-w-2xl text-sm leading-relaxed text-[#d4b8e0] md:text-base">
         Evidencia documental que respalda mi trayectoria operativa y formación en sistemas.
