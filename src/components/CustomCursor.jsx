@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 export default function CustomCursor() {
+  const { pathname } = useLocation()
   const dotRef = useRef(null)
   const ringRef = useRef(null)
   const pos = useRef({ x: 0, y: 0 })
@@ -10,11 +12,13 @@ export default function CustomCursor() {
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 768px)')
-    const check = () => setEnabled(!mq.matches)
-    check()
-    mq.addEventListener('change', check)
-    return () => mq.removeEventListener('change', check)
-  }, [])
+    const lightRoute =
+      pathname === '/projects/gantt' || pathname === '/projects/ecommerce'
+    const update = () => setEnabled(!mq.matches && !lightRoute)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [pathname])
 
   useEffect(() => {
     if (!enabled) return undefined

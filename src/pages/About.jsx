@@ -42,10 +42,10 @@ const tagClass =
 
 export default function About() {
   return (
-    <div className="relative z-10 mx-auto max-w-6xl px-4 py-12 md:px-8">
+    <div className="relative z-10 mx-auto max-w-6xl px-4 py-14 md:px-10">
       <ScrollReveal>
         <h2 className="font-display mb-6 text-4xl text-white md:text-5xl">
-          About Me
+          Sobre mí
         </h2>
         <p className="mb-8 max-w-3xl text-lg leading-relaxed text-[#d4b8e0]">
           Soy desarrollador full stack con pasión por interfaces cuidadas y código
@@ -82,12 +82,12 @@ export default function About() {
 
       <ScrollReveal>
         <h2 className="font-display mb-8 text-4xl text-white md:text-5xl">
-          Skills
+          Habilidades
         </h2>
         <div className="mb-12 grid gap-10 lg:grid-cols-2">
           <div>
             <h3 className="font-mono-label mb-4 text-sm uppercase tracking-wider text-[#c44fd8]">
-              Hard skills
+              Habilidades técnicas
             </h3>
             {hard.map((s) => (
               <SkillBar key={s.label} label={s.label} percent={s.p} />
@@ -95,7 +95,7 @@ export default function About() {
           </div>
           <div>
             <h3 className="font-mono-label mb-4 text-sm uppercase tracking-wider text-[#c44fd8]">
-              Soft skills
+              Habilidades blandas
             </h3>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
               {soft.map((s) => (

@@ -17,9 +17,9 @@ function normalizeStatus(s) {
 }
 
 function statusLabel(s) {
-  if (s === 'done') return 'Done'
-  if (s === 'in_progress') return 'In Progress'
-  return 'To Do'
+  if (s === 'done') return 'Hecho'
+  if (s === 'in_progress') return 'En curso'
+  return 'Por hacer'
 }
 
 function priorityLabel(p) {
@@ -213,26 +213,31 @@ export default function GanttPage() {
         <header className="gantt-header">
           <div className="flex flex-wrap items-start gap-4">
             <Link to="/projects" className="gantt-back">
-              ← Volver
+              ← Volver a proyectos
             </Link>
             <div className="gantt-title-block">
-              <h1 className="gantt-title">Task Manager</h1>
-              <p className="gantt-sub">// Gestión de proyectos</p>
+              <h1 className="gantt-title">Gestión de proyectos</h1>
+              <p className="gantt-sub">Diagrama de Gantt · equipos técnicos</p>
             </div>
           </div>
           <button type="button" className="gantt-btn-new" onClick={openNew}>
-            + Nueva Tarea
+            + Nueva tarea
           </button>
         </header>
 
+        <p className="gantt-desc">
+          Sistema de gestión de proyectos con visualización dinámica de tiempos, hitos
+          y dependencias. Optimizado para la toma de decisiones en equipos técnicos.
+        </p>
+
         <div className="gantt-filters">
           <div className="gantt-filter-group">
-            <span className="gantt-filter-label">Status</span>
+            <span className="gantt-filter-label">Estado</span>
             {[
               ['', 'Todos'],
-              ['todo', 'To Do'],
-              ['in_progress', 'In Progress'],
-              ['done', 'Done'],
+              ['todo', 'Por hacer'],
+              ['in_progress', 'En curso'],
+              ['done', 'Hecho'],
             ].map(([val, lab]) => (
               <button
                 key={lab}
@@ -277,7 +282,7 @@ export default function GanttPage() {
             <div className="gantt-sticky-header">Tarea</div>
             {filtered.length === 0 && (
               <div className="gantt-row-left gantt-row-left--odd">
-                <p className="gantt-row-name text-sm text-[#d4b8e0]">
+                <p className="gantt-row-name text-sm text-[#78716c]">
                   Sin resultados
                 </p>
               </div>
@@ -381,7 +386,7 @@ export default function GanttPage() {
 
                 {filtered.length === 0 ? (
                   <div className="flex min-h-[120px] items-center justify-center px-4">
-                    <p className="font-mono-label text-sm text-[#d4b8e0]">
+                    <p className="font-mono-label text-sm text-[#78716c]">
                       Sin tareas que coincidan con los filtros.
                     </p>
                   </div>
@@ -461,7 +466,7 @@ export default function GanttPage() {
             {formatDM(parseISODate(tooltip.task.start))} →{' '}
             {formatDM(parseISODate(tooltip.task.end))}
             <br />
-            Status: {statusLabel(normalizeStatus(tooltip.task.status))}
+            Estado: {statusLabel(normalizeStatus(tooltip.task.status))}
             <br />
             Prioridad: {priorityLabel(tooltip.task.priority)}
           </div>
@@ -516,7 +521,7 @@ export default function GanttPage() {
               </select>
             </div>
             <div className="gantt-field">
-              <label htmlFor="gantt-s">Status</label>
+              <label htmlFor="gantt-s">Estado</label>
               <select
                 id="gantt-s"
                 value={modal.status}
@@ -524,9 +529,9 @@ export default function GanttPage() {
                   setModal((m) => ({ ...m, status: e.target.value }))
                 }
               >
-                <option value="todo">To Do</option>
-                <option value="in_progress">In Progress</option>
-                <option value="done">Done</option>
+                <option value="todo">Por hacer</option>
+                <option value="in_progress">En curso</option>
+                <option value="done">Hecho</option>
               </select>
             </div>
             <div className="gantt-field">

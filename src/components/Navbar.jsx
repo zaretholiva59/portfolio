@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 
 const links = [
-  { to: '/', label: 'Home' },
-  { to: '/profile', label: 'Profile' },
-  { to: '/about', label: 'About' },
+  { to: '/', label: 'Inicio', end: true },
+  { to: '/profile', label: 'Perfil', end: false },
+  { to: '/about', label: 'Sobre mí', end: false },
 ]
 
 export default function Navbar() {
@@ -38,11 +38,11 @@ export default function Navbar() {
 
       <div className={`nav-links-wrap ml-auto flex flex-1 items-center justify-end gap-3 ${open ? 'open' : ''}`}>
         <nav className="nav-links flex flex-wrap items-center justify-end gap-1">
-          {links.map(({ to, label }) => (
+          {links.map(({ to, label, end }) => (
             <NavLink
               key={to}
               to={to}
-              end={to === '/'}
+              end={end}
               className={({ isActive }) =>
                 `nav-link interactive-glow ${isActive ? 'nav-link-active' : ''}`
               }
@@ -51,16 +51,17 @@ export default function Navbar() {
               {label}
             </NavLink>
           ))}
-        </nav>
-        <div className="nav-see-more-wrap">
-          <Link
+          <NavLink
             to="/projects"
-            className="nav-see-more interactive-glow"
+            className={({ isActive }) =>
+              `nav-link interactive-glow ${isActive ? 'nav-link-active' : ''}`
+            }
+            isActive={(_, loc) => loc.pathname.startsWith('/projects')}
             onClick={() => setOpen(false)}
           >
-            See More &gt;&gt;
-          </Link>
-        </div>
+            Proyectos
+          </NavLink>
+        </nav>
       </div>
     </header>
   )
