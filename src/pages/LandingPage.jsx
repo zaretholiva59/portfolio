@@ -95,29 +95,29 @@ const portfolio = [
   {
     id: 'gantt',
     title: 'Gestión de proyectos (Gantt)',
-    roleBadge: 'Full stack',
+    roleBadge: 'React + Vite',
     desc:
-      'Vista tipo diagrama de Gantt con tareas, fechas y estados. Datos en el navegador.',
-    stack: ['React', 'CSS', 'Almacenamiento local'],
-    link: '/projects/gantt',
+      'Diagrama Gantt y Kanban con drag & drop, prioridades, fechas límite y persistencia en el navegador.',
+    stack: ['React', 'Vite', 'localStorage', 'CSS'],
+    link: 'https://github.com/zaretholiva59/gantt-manager',
   },
   {
     id: 'ecom',
     title: 'Comercio electrónico integral',
-    roleBadge: 'Full stack',
+    roleBadge: 'React + Vite',
     desc:
-      'Catálogo, carrito y flujo de pago simulado. Administración básica de productos.',
-    stack: ['React', 'Almacenamiento local', 'Imágenes de referencia'],
-    link: '/projects/ecommerce',
+      'Catálogo, carrito, wishlist, búsqueda y flujo de pago simulado con persistencia en el navegador.',
+    stack: ['React', 'Vite', 'localStorage', 'CSS'],
+    link: 'https://github.com/zaretholiva59/ecommerce-app',
   },
   {
     id: 'preschool',
-    title: 'Sitio Web para Preescolar',
-    roleBadge: 'Diseño y Desarrollo',
+    title: 'Sistema de Gestión Preescolar',
+    roleBadge: 'React + Vite',
     desc:
-      'Página web completa para un centro preescolar, incluyendo secciones de actividades, personal y formulario de inscripción.',
-    stack: ['React', 'Tailwind CSS', 'Componentes Modulares'],
-    link: '/projects/preschool',
+      'Actividades, galería, calendario y anuncios para gestión de aulas preescolares.',
+    stack: ['React', 'Vite', 'localStorage', 'CSS'],
+    link: 'https://github.com/zaretholiva59/preschool-app',
   },
 ]
 

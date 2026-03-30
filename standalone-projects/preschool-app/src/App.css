@@ -1,0 +1,184 @@
+/* Preschool App — Standalone Styles */
+:root {
+  --kid-purple: #7c3aed;
+  --kid-yellow: #f59e0b;
+  --kid-orange: #f97316;
+  --kid-blue: #3b82f6;
+  --kid-green: #10b981;
+  --kid-pink: #ec4899;
+}
+
+.ps-app {
+  min-height: 100vh;
+}
+
+/* Animations */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: revealUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes revealUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero */
+.ps-hero {
+  background: linear-gradient(135deg, #fffbeb 0%, #faf5ff 100%);
+  padding: 6rem 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ps-hero::before {
+  content: "🎨";
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  font-size: 3rem;
+  opacity: 0.2;
+  animation: float 4s infinite;
+}
+
+.ps-hero::after {
+  content: "🚀";
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  font-size: 3rem;
+  opacity: 0.2;
+  animation: float 5s infinite reverse;
+}
+
+.ps-title {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 900;
+  color: var(--kid-purple);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.ps-btn-main {
+  background: var(--kid-purple);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 999px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 0 #5b21b6;
+  transition: all 0.2s;
+}
+
+.ps-btn-main:hover {
+  transform: translateY(2px);
+  box-shadow: 0 8px 0 #5b21b6;
+}
+
+.ps-btn-main:active {
+  transform: translateY(10px);
+  box-shadow: 0 0 0 #5b21b6;
+}
+
+/* Cards */
+.ps-card {
+  border-radius: 24px;
+  padding: 2rem;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ps-card:hover {
+  transform: scale(1.05) rotate(1deg);
+}
+
+/* Activities */
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 16px;
+  border: 2px solid #f3f4f6;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.activity-item.completed {
+  background: #ecfdf5;
+  border-color: var(--kid-green);
+  opacity: 0.7;
+}
+
+.check-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.completed .check-circle {
+  background: var(--kid-green);
+  border-color: var(--kid-green);
+  color: white;
+}
+
+/* Gallery */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-item {
+  aspect-ratio: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Modal */
+.ps-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.ps-modal-img {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.5);
+}

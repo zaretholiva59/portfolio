@@ -1,5 +1,6 @@
 export const EC_PRODUCTS_KEY = 'ec-products'
 export const EC_CART_KEY = 'ec-cart'
+export const EC_WISHLIST_KEY = 'ec-wishlist'
 
 export const CATEGORY_LABELS = {
   todas: 'Todas',
@@ -116,4 +117,17 @@ export function loadCart() {
 
 export function saveCart(cart) {
   localStorage.setItem(EC_CART_KEY, JSON.stringify(cart))
+}
+
+export function loadWishlist() {
+  try {
+    const raw = localStorage.getItem(EC_WISHLIST_KEY)
+    return raw ? JSON.parse(raw) : []
+  } catch {
+    return []
+  }
+}
+
+export function saveWishlist(wishlist) {
+  localStorage.setItem(EC_WISHLIST_KEY, JSON.stringify(wishlist))
 }

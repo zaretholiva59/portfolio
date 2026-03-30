@@ -14,7 +14,6 @@ function addDays(base, n) {
   return x
 }
 
-/** Fechas repartidas en mes actual + siguiente para que el Gantt muestre todas las barras */
 export function getDefaultTasks() {
   const now = new Date()
   const y = now.getFullYear()
@@ -124,7 +123,6 @@ export function parseISODate(s) {
   return new Date(y, mo - 1, d)
 }
 
-/** Primer día del mes actual y último día del mes siguiente */
 export function getViewRange() {
   const now = new Date()
   const rangeStart = new Date(now.getFullYear(), now.getMonth(), 1)
@@ -140,15 +138,4 @@ export function eachDayInRange(start, end) {
     d.setDate(d.getDate() + 1)
   }
   return days
-}
-
-export function daysBetweenInclusive(a, b) {
-  const ms = b.getTime() - a.getTime()
-  return Math.round(ms / 86400000) + 1
-}
-
-export function clampDate(d, min, max) {
-  if (d < min) return new Date(min)
-  if (d > max) return new Date(max)
-  return d
 }

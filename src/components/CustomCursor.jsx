@@ -13,13 +13,11 @@ export default function CustomCursor() {
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 768px)')
-    const lightRoute =
-      pathname === '/projects/gantt' || pathname === '/projects/ecommerce'
-    const update = () => setEnabled(!mq.matches && !lightRoute)
+    const update = () => setEnabled(!mq.matches)
     update()
     mq.addEventListener('change', update)
     return () => mq.removeEventListener('change', update)
-  }, [pathname])
+  }, [])
 
   useEffect(() => {
     if (!enabled) return undefined

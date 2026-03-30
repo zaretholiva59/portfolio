@@ -1,0 +1,46 @@
+:root {
+  --bg-deep: #0d001a;
+  --bg-card: #1a0030;
+  --accent: #c44fd8;
+  --accent-2: #e040fb;
+  --accent-3: #b026d4;
+  --text: #ffffff;
+  --text-muted: #d4b8e0;
+  --border-purple: rgba(196, 79, 216, 0.5);
+  --glow: 0 0 20px rgba(196, 79, 216, 0.5);
+  --glow-strong: 0 0 28px rgba(224, 64, 251, 0.45);
+  --label-bg: #2d0050;
+  --font-display: "Boogaloo", "Lilita One", cursive;
+  --font-script: "Pacifico", cursive;
+  --font-body: "Poppins", system-ui, sans-serif;
+  --font-mono: "Share Tech Mono", ui-monospace, monospace;
+  --font-logo: "Orbitron", sans-serif;
+  --dot-grid: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px
+  );
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: #1c1917;
+  background-color: #f7f7f5;
+}
+
+#root {
+  min-height: 100vh;
+}

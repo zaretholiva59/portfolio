@@ -6,9 +6,6 @@ import BlobLayer from './components/BlobLayer'
 import CustomCursor from './components/CustomCursor'
 import LandingPage from './pages/LandingPage'
 import Preloader from './components/Preloader'
-import PreschoolPage from './projects/preschool/PreschoolPage'
-import GanttPage from './projects/gantt/GanttPage'
-import EcommercePage from './projects/ecommerce/EcommercePage'
 import ScrollToTop from './components/ScrollToTop'
 
 const sections = ['home', 'profile', 'about', 'projects']
@@ -62,9 +59,6 @@ function AppContent() {
         <main className="relative z-10 flex-1 pt-[56px]">
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/projects/preschool" element={<PreschoolPage />} />
-            <Route path="/projects/gantt" element={<GanttPage />} />
-            <Route path="/projects/ecommerce" element={<EcommercePage />} />
           </Routes>
         </main>
         <Footer />
