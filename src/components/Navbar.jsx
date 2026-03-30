@@ -33,7 +33,7 @@ export default function Navbar({ activeLink }) {
 
   return (
     <header
-      className={`nav-root ${scrolled ? 'nav-scrolled' : ''} sticky top-0 z-50`}
+      className={`nav-root ${scrolled ? 'nav-scrolled' : ''} fixed top-0 left-0 right-0 z-50 w-full`}
     >
       <a href="#home" className="nav-logo" onClick={(e) => handleLinkClick(e, '#home')}>
         &lt;Zareth /&gt;

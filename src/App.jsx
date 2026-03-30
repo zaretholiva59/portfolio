@@ -6,10 +6,10 @@ import BlobLayer from './components/BlobLayer'
 import CustomCursor from './components/CustomCursor'
 import LandingPage from './pages/LandingPage'
 import Preloader from './components/Preloader'
-import PreschoolPage from './pages/preschool/PreschoolPage'
-import BlogPage from './pages/BlogPage'
-import GanttPage from './pages/GanttPage'
-import EcommercePage from './pages/ecommerce/EcommercePage'
+import PreschoolPage from './projects/preschool/PreschoolPage'
+import GanttPage from './projects/gantt/GanttPage'
+import EcommercePage from './projects/ecommerce/EcommercePage'
+import ScrollToTop from './components/ScrollToTop'
 
 const sections = ['home', 'profile', 'about', 'projects']
 
@@ -53,16 +53,16 @@ function AppContent() {
 
   return (
     <>
+      <ScrollToTop />
       <Preloader className={loading ? '' : 'fade-out'} />
       <div className={`app-shell flex min-h-screen flex-col app-shell-enter ${loading ? 'hidden' : ''}`}>
         <BlobLayer />
         <CustomCursor />
         <Navbar activeLink={activeLink} />
-        <main className="relative z-10 flex-1">
+        <main className="relative z-10 flex-1 pt-[56px]">
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/projects/preschool" element={<PreschoolPage />} />
-            <Route path="/projects/blog" element={<BlogPage />} />
             <Route path="/projects/gantt" element={<GanttPage />} />
             <Route path="/projects/ecommerce" element={<EcommercePage />} />
           </Routes>

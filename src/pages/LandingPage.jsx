@@ -119,15 +119,6 @@ const portfolio = [
     stack: ['React', 'Tailwind CSS', 'Componentes Modulares'],
     link: '/projects/preschool',
   },
-  {
-    id: 'blog',
-    title: 'Blog Personal',
-    roleBadge: 'Full Stack',
-    desc:
-      'Plataforma de blog personal para escribir y publicar artículos, con un diseño limpio y moderno.',
-    stack: ['React', 'Firebase', 'Markdown'],
-    link: '/projects/blog',
-  },
 ]
 
 function CareerExperienceCard({ children, variant }) {
@@ -202,6 +193,25 @@ function MockupEcom() {
   )
 }
 
+function MockupPreschool() {
+  return (
+    <div className="portfolio-mockup portfolio-mockup--preschool" aria-hidden>
+      <img
+        className="portfolio-mockup__preschool-photo"
+        src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=900&q=85"
+        alt=""
+        loading="lazy"
+      />
+      <div className="portfolio-mockup__preschool-overlay" />
+      <div className="portfolio-mockup__preschool-content">
+        <div className="portfolio-mockup__preschool-block" />
+        <div className="portfolio-mockup__preschool-block" />
+        <div className="portfolio-mockup__preschool-block" />
+      </div>
+    </div>
+  )
+}
+
 function PortfolioCard({ item }) {
   const ref = useRef(null)
   const [tilt, setTilt] = useState({
@@ -235,6 +245,19 @@ function PortfolioCard({ item }) {
     })
   }, [])
 
+  const renderMockup = () => {
+    switch (item.id) {
+      case 'gantt':
+        return <MockupGantt />
+      case 'ecom':
+        return <MockupEcom />
+      case 'preschool':
+        return <MockupPreschool />
+      default:
+        return null
+    }
+  }
+
   return (
     <div className="portfolio-card-root">
       <div
@@ -246,7 +269,7 @@ function PortfolioCard({ item }) {
       >
         <div className="portfolio-card-gradient-border">
           <div className="portfolio-card-glass group">
-            {item.id === 'gantt' ? <MockupGantt /> : <MockupEcom />}
+            {renderMockup()}
             <span className="portfolio-card-pill">{item.roleBadge}</span>
             <h2 className="portfolio-card-title">{item.title}</h2>
             <p className="portfolio-card-desc">{item.desc}</p>
