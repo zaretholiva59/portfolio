@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom'
 
-const CV_HREF = '/cv.pdf'
-
 export default function Home() {
   return (
     <section className="relative z-10 flex min-h-[calc(100vh-56px)] flex-col px-4 pb-28 pt-10 md:px-8 md:pt-12 lg:px-12">
@@ -16,20 +14,11 @@ export default function Home() {
           <p className="font-mono-label hero-anim-left delay-3 mx-auto mb-3 max-w-lg text-sm leading-relaxed text-[#e9d5ff] md:text-base">
             Desarrolladora de sistemas | Especialista en operaciones TI
           </p>
-          <p className="font-body hero-anim-left delay-3 mx-auto mb-8 max-w-xl text-sm leading-relaxed text-[#d4b8e0] md:text-base">
+          <p className="font-body hero-anim-left delay-3 mx-auto mb-10 max-w-xl text-sm leading-relaxed text-[#d4b8e0] md:text-base">
             Productos web claros y código mantenible.
           </p>
-          <div className="hero-anim-left delay-4 mx-auto flex flex-col items-center gap-3">
-            <a
-              href={CV_HREF}
-              className="hero-cv-primary font-body inline-flex items-center justify-center rounded-xl border border-[rgba(246,211,101,0.55)] bg-[rgba(246,211,101,0.12)] px-6 py-3 text-sm font-semibold text-[#fde68a] transition duration-300 hover:border-[rgba(246,211,101,0.9)] hover:bg-[rgba(246,211,101,0.22)] hover:text-white"
-              download="CV-Zareth-Oliva.pdf"
-            >
-              Descargar CV (PDF)
-            </a>
-          </div>
 
-          <div className="hero-nav-line mt-10">
+          <div className="hero-anim-left delay-4 hero-nav-line mt-2">
             <div className="hero-nav-inner justify-center">
               <Link
                 to="/"

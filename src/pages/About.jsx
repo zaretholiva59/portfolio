@@ -1,6 +1,7 @@
 import ScrollReveal from '../components/ScrollReveal'
 import SkillBar from '../components/SkillBar'
 import SoftSkillRing from '../components/SoftSkillRing'
+import { CERTIFICADO_LABORAL_EL_URL } from '../constants/staticDocs'
 
 const languages = [
   'HTML',
@@ -40,18 +41,16 @@ const soft = [
 const tagClass =
   'rounded-full border border-[rgba(196,79,216,0.5)] bg-[#1a0030] px-4 py-1.5 font-mono-label text-xs text-[#d4b8e0] transition duration-300 hover:shadow-[0_0_20px_rgba(196,79,216,0.5)]'
 
-const CERT_LABORAL_EL = '/certificates/certificado-laboral-e-l-technology.pdf'
-
-const careerElTechnology = {
-  company: 'E&L Technology',
-  roleTitle: 'Técnico TI / asistente de operaciones',
+const careerElConsultores = {
+  company: 'E&L Consultores',
   period: '2024 – 2025',
+  roleVerbatim:
+    'Técnico TI e Implementadora, encargada de la configuración de equipos multimedia y elaboración de mapas topológicos de redes para MINSA.',
   bullets: [
-    'Implementación y configuración de equipos multimedia y despliegue técnico en campo.',
-    'Creación y mantenimiento de mapas topológicos de redes (MINSA), documentando nodos y puntos críticos.',
     'Gestión de dossiers y documentación técnica bajo normativa para el proyecto Escuelas Bicentenario (MINEDU).',
   ],
   badges: ['MINSA', 'MINEDU', 'Redes', 'Documentación'],
+  certHref: CERTIFICADO_LABORAL_EL_URL,
 }
 
 const careerSodimac = {
@@ -114,25 +113,36 @@ export default function About() {
               <span className="career-timeline__dot" />
               <span className="career-timeline__stem" />
             </div>
-            <div className="portfolio-card-gradient-border career-card-wrap">
-              <div className="portfolio-card-glass group career-card-glass">
+            <div className="portfolio-card-gradient-border career-card-wrap career-card-wrap--el">
+              <div className="portfolio-card-glass group career-card-glass career-card-el">
                 <h3 className="portfolio-card-title career-card-title career-card-company">
-                  {careerElTechnology.company}
+                  {careerElConsultores.company}
                 </h3>
-                <p className="career-card-role">{careerElTechnology.roleTitle}</p>
-                <p className="career-card-period">{careerElTechnology.period}</p>
+                <p className="career-card-period">{careerElConsultores.period}</p>
+                <p className="career-card-role career-card-role--verbatim">
+                  {careerElConsultores.roleVerbatim}
+                </p>
                 <ul className="career-card-bullets">
-                  {careerElTechnology.bullets.map((line, i) => (
+                  {careerElConsultores.bullets.map((line, i) => (
                     <li key={`el-${i}`}>{line}</li>
                   ))}
                 </ul>
                 <div className="portfolio-card-tags career-card-tags">
-                  {careerElTechnology.badges.map((b) => (
+                  {careerElConsultores.badges.map((b) => (
                     <span key={b} className="portfolio-card-tag career-skill-badge">
                       {b}
                     </span>
                   ))}
                 </div>
+                <a
+                  className="career-cert-official-btn"
+                  href={careerElConsultores.certHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fa-regular fa-eye" aria-hidden />
+                  Ver Certificado Oficial
+                </a>
               </div>
             </div>
           </li>
@@ -141,7 +151,7 @@ export default function About() {
               <span className="career-timeline__dot" />
               <span className="career-timeline__stem" />
             </div>
-            <div className="portfolio-card-gradient-border career-card-wrap">
+            <div className="portfolio-card-gradient-border career-card-wrap career-card-wrap--sodimac">
               <div className="portfolio-card-glass group career-card-glass">
                 <h3 className="portfolio-card-title career-card-title career-card-company">
                   {careerSodimac.company}
@@ -161,30 +171,6 @@ export default function About() {
             </div>
           </li>
         </ul>
-
-        <div className="portfolio-card-gradient-border career-cert-block max-w-3xl">
-          <div className="portfolio-card-glass career-cert-inner">
-            <h3 className="career-cert-title">Certificado laboral (E&L Technology)</h3>
-            <p className="career-cert-lead">
-              Mismo documento que respalda el periodo 2024–2025 descrito arriba.
-              Si no se visualiza en el navegador, usa el enlace para abrir el PDF.
-            </p>
-            <div className="career-cert-frame">
-              <iframe
-                title="Certificado laboral E&L Technology"
-                src={`${CERT_LABORAL_EL}#view=FitH`}
-              />
-            </div>
-            <a
-              className="career-cert-pdf-link"
-              href={CERT_LABORAL_EL}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Abrir certificado en PDF
-            </a>
-          </div>
-        </div>
       </ScrollReveal>
 
       <ScrollReveal delay={0.1}>

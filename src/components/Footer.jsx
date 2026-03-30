@@ -18,13 +18,6 @@ export default function Footer() {
           WhatsApp
         </a>
       </nav>
-      <a
-        className="footer-cv-btn"
-        href="/cv.pdf"
-        download="CV-Zareth-Oliva.pdf"
-      >
-        Descargar CV (PDF)
-      </a>
     </footer>
   )
 }

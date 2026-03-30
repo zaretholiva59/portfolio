@@ -1,12 +1,13 @@
 import ScrollReveal from './ScrollReveal'
+import { CERTIFICADO_LABORAL_EL_URL } from '../constants/staticDocs'
 
-const CERT_LABORAL = '/certificates/certificado-laboral-e-l-technology.pdf'
+const CERT_LABORAL = CERTIFICADO_LABORAL_EL_URL
 
 const certs = [
   {
     id: 'laboral-el',
     title: 'Certificado laboral TI',
-    issuer: 'E&L Technology',
+    issuer: 'E&L Consultores',
     year: '2024–2025',
     verifyHref: CERT_LABORAL,
     brand: 'company',
