@@ -122,7 +122,7 @@ export default function About() {
           Trayectoria profesional
         </h2>
         <p className="mb-6 max-w-3xl text-base leading-relaxed text-[#d4b8e0] md:text-lg">
-          Resumen basado en constancias laborales y certificaciones.
+          
         </p>
         <div className="portfolio-card-gradient-border career-vision-wrap mb-10 max-w-3xl">
           <div className="portfolio-card-glass career-vision-inner">
