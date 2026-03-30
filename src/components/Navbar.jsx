@@ -1,15 +1,23 @@
 import { useEffect, useState } from 'react'
-import { NavLink, Link } from 'react-router-dom'
 
 const links = [
-  { to: '/', label: 'Inicio', end: true },
-  { to: '/profile', label: 'Perfil', end: false },
-  { to: '/about', label: 'Sobre mí', end: false },
+  { to: '#home', label: 'Inicio' },
+  { to: '#profile', label: 'Perfil' },
+  { to: '#about', label: 'Sobre mí' },
+  { to: '#projects', label: 'Proyectos' },
 ]
+
+function smoothScroll(targetId) {
+  const target = document.querySelector(targetId)
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
     onScroll()
@@ -17,13 +25,19 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const handleLinkClick = (e, to) => {
+    e.preventDefault()
+    smoothScroll(to)
+    setOpen(false)
+  }
+
   return (
     <header
       className={`nav-root ${scrolled ? 'nav-scrolled' : ''} relative`}
     >
-      <Link to="/" className="nav-logo">
+      <a href="#home" className="nav-logo" onClick={(e) => handleLinkClick(e, '#home')}>
         &lt;Zareth /&gt;
-      </Link>
+      </a>
 
       <button
         type="button"
@@ -38,29 +52,16 @@ export default function Navbar() {
 
       <div className={`nav-links-wrap ml-auto flex flex-1 items-center justify-end gap-3 ${open ? 'open' : ''}`}>
         <nav className="nav-links flex flex-wrap items-center justify-end gap-1">
-          {links.map(({ to, label, end }) => (
-            <NavLink
+          {links.map(({ to, label }) => (
+            <a
               key={to}
-              to={to}
-              end={end}
-              className={({ isActive }) =>
-                `nav-link interactive-glow ${isActive ? 'nav-link-active' : ''}`
-              }
-              onClick={() => setOpen(false)}
+              href={to}
+              className="nav-link interactive-glow"
+              onClick={(e) => handleLinkClick(e, to)}
             >
               {label}
-            </NavLink>
+            </a>
           ))}
-          <NavLink
-            to="/projects"
-            className={({ isActive }) =>
-              `nav-link interactive-glow ${isActive ? 'nav-link-active' : ''}`
-            }
-            isActive={(_, loc) => loc.pathname.startsWith('/projects')}
-            onClick={() => setOpen(false)}
-          >
-            Proyectos
-          </NavLink>
         </nav>
       </div>
     </header>
