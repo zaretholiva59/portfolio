@@ -55,6 +55,8 @@ function AppContent() {
         <main className="relative z-10 flex-1 pt-[56px]">
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/projects" element={<LandingPage />} />
+            <Route path="*" element={<LandingPage />} />
           </Routes>
         </main>
         <Footer />

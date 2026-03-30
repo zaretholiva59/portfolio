@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import { useRef, useCallback, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { useEffect, useRef, useCallback, useState } from 'react'
 import ScrollReveal from '../components/ScrollReveal'
 import Certifications from '../components/Certifications'
 import SkillBar from '../components/SkillBar'
@@ -305,6 +305,26 @@ function PortfolioCard({ item }) {
 }
 
 export default function LandingPage() {
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.pathname !== '/projects') return
+
+    const target = () => document.getElementById('projects')
+    const el = target()
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      return
+    }
+
+    const id = window.setTimeout(() => {
+      const late = target()
+      if (late) late.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 60)
+
+    return () => window.clearTimeout(id)
+  }, [location.pathname])
+
   return (
     <>
       <section id="home" className="relative z-10 flex min-h-[calc(100vh-56px)] flex-col px-4 pb-28 pt-10 md:px-8 md:pt-12 lg:px-12">
