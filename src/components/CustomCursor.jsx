@@ -9,6 +9,7 @@ export default function CustomCursor() {
   const ringPos = useRef({ x: 0, y: 0 })
   const raf = useRef(0)
   const [enabled, setEnabled] = useState(false)
+  const [isHovering, setIsHovering] = useState(false)
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 768px)')
@@ -25,6 +26,17 @@ export default function CustomCursor() {
 
     const move = (e) => {
       pos.current = { x: e.clientX, y: e.clientY }
+    }
+
+    const onMouseOver = (e) => {
+      const target = e.target
+      const isInteractive =
+        target.closest('a') ||
+        target.closest('button') ||
+        target.closest('[class*="interactive"]') ||
+        window.getComputedStyle(target).cursor === 'pointer'
+
+      setIsHovering(!!isInteractive)
     }
 
     const tick = () => {
@@ -44,9 +56,11 @@ export default function CustomCursor() {
     }
 
     window.addEventListener('mousemove', move)
+    window.addEventListener('mouseover', onMouseOver)
     raf.current = requestAnimationFrame(tick)
     return () => {
       window.removeEventListener('mousemove', move)
+      window.removeEventListener('mouseover', onMouseOver)
       cancelAnimationFrame(raf.current)
     }
   }, [enabled])
@@ -54,9 +68,12 @@ export default function CustomCursor() {
   if (!enabled) return null
 
   return (
-    <>
+    <div className="cursor-shell" aria-hidden="true">
+      <div
+        ref={ringRef}
+        className={`cursor-ring ${isHovering ? 'cursor-ring--hover' : ''}`}
+      />
       <div ref={dotRef} className="cursor-dot" />
-      <div ref={ringRef} className="cursor-ring" />
-    </>
+    </div>
   )
 }

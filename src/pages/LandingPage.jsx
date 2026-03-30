@@ -214,6 +214,7 @@ function MockupPreschool() {
 
 function PortfolioCard({ item }) {
   const ref = useRef(null)
+  const [isTilting, setIsTilting] = useState(false)
   const [tilt, setTilt] = useState({
     transform:
       'perspective(1100px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)',
@@ -231,13 +232,15 @@ function PortfolioCard({ item }) {
     const max = 4
     const rotateY = px * max
     const rotateX = -py * max
+    
+    setIsTilting(true)
     setTilt({
       transform: `perspective(1100px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.018,1.018,1.018)`,
-      transition: 'transform 0.08s linear',
     })
   }, [])
 
   const onLeave = useCallback(() => {
+    setIsTilting(false)
     setTilt({
       transform:
         'perspective(1100px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)',
@@ -262,7 +265,7 @@ function PortfolioCard({ item }) {
     <div className="portfolio-card-root">
       <div
         ref={ref}
-        className="portfolio-card-tilt"
+        className={`portfolio-card-tilt ${isTilting ? 'portfolio-card-tilt--tilting' : ''}`}
         style={tilt}
         onMouseMove={onMove}
         onMouseLeave={onLeave}
@@ -302,7 +305,7 @@ export default function LandingPage() {
             <h1 className="font-body hero-anim-left delay-2 mb-5 text-4xl font-bold text-white md:text-6xl lg:text-7xl">
               <span className="glitch-name">Zareth</span>
             </h1>
-            <p className="font-mono-label hero-anim-left delay-3 mx-auto mb-3 max-w-lg text-sm leading-relaxed text-[#e9d5ff] md:text-base">
+            <p className="font-mono-label hero-anim-left delay-3 mx-auto mb-3 max-w-lg text-sm leading-relaxed text-[#e9d5ff] md:text-base shimmer-text">
               Desarrolladora de sistemas | Especialista en operaciones TI
             </p>
             <p className="font-body hero-anim-left delay-3 mx-auto mb-10 max-w-xl text-sm leading-relaxed text-[#d4b8e0] md:text-base">
@@ -315,7 +318,7 @@ export default function LandingPage() {
 
       <section id="profile" className="relative z-10 mx-auto max-w-6xl px-4 py-14 md:px-10">
         <div className="grid gap-12 lg:grid-cols-2">
-          <ScrollReveal>
+          <ScrollReveal variant="left">
             <h2 className="font-display mb-6 text-4xl text-white md:text-5xl">
               Mi perfil
             </h2>
@@ -343,7 +346,7 @@ export default function LandingPage() {
             </div>
           </ScrollReveal>
 
-          <ScrollReveal>
+          <ScrollReveal variant="right">
             <h2 className="font-display mb-6 text-4xl text-white md:text-5xl">
               Contacto
             </h2>

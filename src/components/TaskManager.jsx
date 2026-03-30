@@ -42,6 +42,13 @@ const initialTasks = () => [
     start: 10,
     duration: 2,
   },
+  {
+    id: 't6',
+    title: 'Mantenimiento',
+    column: 'todo',
+    start: 12,
+    duration: 2,
+  },
 ]
 
 const TOTAL_DAYS = 14
