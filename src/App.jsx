@@ -66,8 +66,12 @@ function AppContent() {
 }
 
 export default function App() {
+  const rawBase = import.meta.env.BASE_URL || '/'
+  // Vite may emit "/./" when base is "./" (breaks BrowserRouter on real paths like "/projects")
+  const basename = rawBase === '/./' ? '/' : rawBase
+
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <BrowserRouter basename={basename}>
       <AppContent />
     </BrowserRouter>
   )
