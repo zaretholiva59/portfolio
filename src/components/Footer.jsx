@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="footer-root">
       <p className="footer-copy">
-        © 2024 Zareth Oliva — Callao, Lima, Perú
+        © 2026 Zareth Oliva — Callao, Lima, Perú
       </p>
       <nav className="footer-links" aria-label="Enlaces de contacto">
         <a className="footer-link" href={GITHUB} target="_blank" rel="noopener noreferrer">
