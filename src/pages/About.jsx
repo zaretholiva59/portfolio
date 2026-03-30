@@ -18,7 +18,7 @@ const tools = [
   'Git',
   'Figma',
   'PostgreSQL',
-  'REST APIs',
+  'APIs REST',
   'VS Code',
 ]
 
@@ -42,20 +42,26 @@ const tagClass =
 
 const careerRoles = [
   {
-    title: 'Asistente de operaciones / implementadora TI',
+    company: 'E&L Consultores S.A.C.',
+    roleTitle: 'Implementadora TI / asistente de operaciones',
+    period: 'Nov 2024 – Dic 2025',
     bullets: [
-      'Implementación y configuración de infraestructura TI en campo y diseño de mapas topológicos de redes.',
-      'Optimización de flujos de trabajo mediante la gestión y digitalización de documentación técnica para proyectos gubernamentales (Escuelas del Bicentenario).',
+      'Configuración de equipos TI en campo y elaboración de mapas topológicos de redes (MINSA).',
+      'Gestión de documentación técnica y dossiers — proyecto Escuelas del Bicentenario (MINEDU).',
+      'Coordinación entre áreas de operaciones, producción y telecomunicaciones.',
     ],
-    badges: ['Redes', 'Topología', 'Documentación técnica', 'Excel avanzado'],
+    badges: ['MINSA', 'MINEDU', 'Redes', 'Telecomunicaciones', 'Documentación'],
   },
   {
-    title: 'Asesora de ventas y atención (especialista CRM)',
+    company: 'Sodimac Perú',
+    roleTitle: 'Gestión de datos y atención (call center)',
+    period: '2018 – 2024',
     bullets: [
-      'Gestión avanzada de datos y flujos de trabajo en Salesforce CRM, resolviendo incidencias críticas y asegurando la integridad de los registros.',
-      'Control de inventario y análisis de stock de productos líderes, aplicando lógica de organización de datos en sistemas corporativos.',
+      'Gestión de tickets y reclamos en Salesforce CRM con seguimiento hasta cierre.',
+      'Control de inventario y stock de productos top 10/30 en sistema.',
+      'Coordinación de envíos con almacén y registro de datos de productos.',
     ],
-    badges: ['Salesforce', 'SQL', 'CRM', 'Inventario', 'Excel avanzado'],
+    badges: ['Salesforce', 'CRM', 'Inventario', 'Atención al cliente'],
   },
 ]
 
@@ -65,12 +71,12 @@ const careerInsight =
 export default function About() {
   return (
     <div className="relative z-10 mx-auto max-w-6xl px-4 py-14 md:px-10">
-      <ScrollReveal>
+      <ScrollReveal delay={0}>
         <h2 className="font-display mb-6 text-4xl text-white md:text-5xl">
           Sobre mí
         </h2>
         <p className="mb-8 max-w-3xl text-lg leading-relaxed text-[#d4b8e0]">
-          Soy desarrollador full stack con pasión por interfaces cuidadas y código
+          Soy desarrolladora full stack con pasión por interfaces cuidadas y código
           mantenible. Disfruto transformar ideas en productos web rápidos y
           accesibles, colaborando de forma cercana con diseño y negocio. Me mueve
           aprender herramientas nuevas, iterar con feedback real y dejar cada
@@ -102,32 +108,34 @@ export default function About() {
         </div>
       </ScrollReveal>
 
-      <ScrollReveal>
+      <ScrollReveal delay={0.06}>
         <h2 className="font-display mb-3 text-4xl text-white md:text-5xl">
           Trayectoria profesional
         </h2>
         <p className="mb-2 max-w-3xl text-base leading-relaxed text-[#d4b8e0] md:text-lg">
-          Más de{' '}
-          <span className="text-white/95">6 años</span> combinando operaciones,
-          datos y soporte técnico: una base que traduzco hoy en{' '}
-          <span className="text-[#eab308]/90">ingeniería de software</span>
-          —gestión de datos, lógica de sistemas y foco en el usuario.
+          Trayectoria en{' '}
+          <span className="text-white/95">operaciones, datos y TI en campo</span>
+          : experiencia que hoy orienta mi{' '}
+          <span className="text-[#eab308]/90">desarrollo de software</span>
+          —procesos de negocio, sistemas y foco en quien usa la herramienta.
         </p>
         <ul className="career-timeline mb-10 max-w-3xl">
           {careerRoles.map((role) => (
-            <li key={role.title} className="career-timeline__item">
+            <li key={role.company} className="career-timeline__item">
               <div className="career-timeline__rail" aria-hidden>
                 <span className="career-timeline__dot" />
                 <span className="career-timeline__stem" />
               </div>
               <div className="portfolio-card-gradient-border career-card-wrap">
                 <div className="portfolio-card-glass group career-card-glass">
-                  <h3 className="portfolio-card-title career-card-title">
-                    {role.title}
+                  <h3 className="portfolio-card-title career-card-title career-card-company">
+                    {role.company}
                   </h3>
+                  <p className="career-card-role">{role.roleTitle}</p>
+                  <p className="career-card-period">{role.period}</p>
                   <ul className="career-card-bullets">
                     {role.bullets.map((line, i) => (
-                      <li key={`${role.title}-${i}`}>{line}</li>
+                      <li key={`${role.company}-${i}`}>{line}</li>
                     ))}
                   </ul>
                   <div className="portfolio-card-tags career-card-tags">
@@ -167,7 +175,7 @@ export default function About() {
         </div>
       </ScrollReveal>
 
-      <ScrollReveal>
+      <ScrollReveal delay={0.1}>
         <h2 className="font-display mb-8 text-4xl text-white md:text-5xl">
           Habilidades
         </h2>

@@ -227,7 +227,7 @@ export default function GanttPage() {
 
         <p className="gantt-desc">
           Sistema de gestión de proyectos con visualización dinámica de tiempos, hitos
-          y dependencias. Optimizado para la toma de decisiones en equipos técnicos.
+          y dependencias. Pensado para apoyar decisiones en equipos técnicos.
         </p>
 
         <div className="gantt-filters">

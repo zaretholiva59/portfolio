@@ -12,7 +12,7 @@ export default function Home() {
             <span className="glitch-name">Zareth</span>
           </h1>
           <p className="font-body hero-anim-left delay-3 mx-auto mb-8 max-w-xl text-base leading-relaxed text-[#d4b8e0] md:text-lg">
-            Desarrollador full stack enfocado en experiencias web limpias, accesibles
+            Desarrolladora full stack enfocada en experiencias web limpias, accesibles
             y con un toque visual memorable. Me gusta unir diseño y tecnología.
           </p>
           <div className="hero-anim-left delay-4 mx-auto flex flex-col items-center gap-3">
@@ -20,7 +20,7 @@ export default function Home() {
               <span className="text-[#c44fd8]" aria-hidden>
                 ◆
               </span>
-              Desarrollador full stack
+              Desarrolladora full stack
             </span>
             <span className="font-mono-label max-w-md text-xs leading-relaxed text-[#d4b8e0] md:text-sm">
               HTML · CSS · JavaScript · Python · Django · Node · Next.js

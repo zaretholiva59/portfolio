@@ -6,11 +6,11 @@ import Certifications from '../components/Certifications'
 const EMAIL = 'zareth55@gmail.com'
 
 const rows = [
-  { label: 'Nombre', value: 'Zareth' },
-  { label: 'Especialidad', value: 'Desarrollador full stack' },
+  { label: 'Nombre', value: 'Zareth Oliva' },
+  { label: 'Especialidad', value: 'Desarrolladora full stack' },
   { label: 'Correo', value: EMAIL },
-  { label: 'Ubicación', value: 'Remoto / LATAM' },
-  { label: 'Disponibilidad', value: 'Abierto a proyectos' },
+  { label: 'Ubicación', value: 'Callao, Lima, Perú' },
+  { label: 'Disponibilidad', value: 'Abierta a proyectos' },
   { label: 'GitHub', value: 'github.com/zaretholiva59' },
 ]
 
@@ -24,11 +24,13 @@ const previews = [
     title: 'Gestión de proyectos (Gantt)',
     desc: 'Diagrama de Gantt, CRUD y filtros.',
     to: '/projects/gantt',
+    variant: 'default',
   },
   {
-    title: 'Tienda integral (e-commerce)',
+    title: 'Comercio electrónico integral',
     desc: 'Catálogo, carrito y pago simulado.',
     to: '/projects/ecommerce',
+    variant: 'ecom',
   },
 ]
 
@@ -101,48 +103,48 @@ export default function Profile() {
         <h3 className="font-display mb-5 inline-block rounded-t-xl bg-[#c44fd8] px-5 py-2.5 text-xl text-white">
           Proyectos
         </h3>
-        <div className="relative">
+        <div className="profile-carousel">
           <button
             type="button"
-            className="absolute left-0 top-1/2 z-[2] hidden -translate-y-1/2 rounded-full border border-[rgba(196,79,216,0.5)] bg-[#1a0030] p-2 text-[#c44fd8] shadow-[0_0_20px_rgba(196,79,216,0.5)] transition hover:bg-[#c44fd8] hover:text-white md:block"
+            className="profile-carousel__btn profile-carousel__btn--prev"
             aria-label="Anterior"
             onClick={() => scrollByDir(-1)}
           >
             <i className="fa-solid fa-chevron-left" />
           </button>
-          <button
-            type="button"
-            className="absolute right-0 top-1/2 z-[2] hidden -translate-y-1/2 rounded-full border border-[rgba(196,79,216,0.5)] bg-[#1a0030] p-2 text-[#c44fd8] shadow-[0_0_20px_rgba(196,79,216,0.5)] transition hover:bg-[#c44fd8] hover:text-white md:block"
-            aria-label="Siguiente"
-            onClick={() => scrollByDir(1)}
-          >
-            <i className="fa-solid fa-chevron-right" />
-          </button>
           <div
             ref={scroller}
-            className="flex gap-4 overflow-x-auto pb-2 pt-1 [scrollbar-width:thin]"
+            className="profile-carousel__track"
           >
             {previews.map((card) => (
               <Link
                 key={card.to}
                 to={card.to}
-                className="group relative block min-w-[168px] max-w-[190px] flex-shrink-0 overflow-hidden rounded-xl border border-[rgba(196,79,216,0.45)] bg-[#1a0030] transition duration-300 hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(196,79,216,0.25)]"
+                className={`profile-preview-card ${card.variant === 'ecom' ? 'profile-preview-card--ecom' : ''}`}
               >
                 <div
-                  className="h-36 w-full bg-gradient-to-br from-[#9b30ff] via-[#b026d4] to-[#0d001a]"
+                  className="profile-preview-card__visual"
                   aria-hidden
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-[rgba(13,0,26,0.92)] px-2 py-2.5">
-                  <p className="text-center font-mono-label text-xs font-semibold text-white">
+                <div className="profile-preview-card__caption">
+                  <p className="profile-preview-card__title">
                     {card.title}
                   </p>
-                  <p className="mt-1 text-center font-body text-[10px] leading-snug text-[#d4b8e0]">
+                  <p className="profile-preview-card__desc">
                     {card.desc}
                   </p>
                 </div>
               </Link>
             ))}
           </div>
+          <button
+            type="button"
+            className="profile-carousel__btn profile-carousel__btn--next"
+            aria-label="Siguiente"
+            onClick={() => scrollByDir(1)}
+          >
+            <i className="fa-solid fa-chevron-right" />
+          </button>
         </div>
       </ScrollReveal>
     </div>

@@ -7,16 +7,16 @@ const portfolio = [
     id: 'gantt',
     title: 'Gestión de proyectos (Gantt)',
     desc:
-      'Sistema de gestión de proyectos con visualización dinámica de tiempos, hitos y dependencias. Optimizado para la toma de decisiones en equipos técnicos.',
-    stack: ['React', 'CSS', 'localStorage'],
+      'Sistema de gestión de proyectos con visualización dinámica de tiempos, hitos y dependencias. Pensado para apoyar decisiones en equipos técnicos.',
+    stack: ['React', 'CSS', 'Almacenamiento local'],
     link: '/projects/gantt',
   },
   {
     id: 'ecom',
-    title: 'Tienda integral (e-commerce) de alto rendimiento',
+    title: 'Comercio electrónico integral',
     desc:
-      'Catálogo filtrable, administración de productos (CRUD), carrito persistente y pasarela de pago con validación. Experiencia retail limpia e imágenes de calidad.',
-    stack: ['React', 'localStorage', 'Unsplash'],
+      'Catálogo filtrable, administración de productos (altas y bajas), carrito persistente y pasarela de pago con validación. Experiencia de tienda clara e imágenes de calidad.',
+    stack: ['React', 'Almacenamiento local', 'Imágenes de referencia'],
     link: '/projects/ecommerce',
   },
 ]
@@ -76,7 +76,7 @@ function MockupEcom() {
   )
 }
 
-function PortfolioCard({ item, index }) {
+function PortfolioCard({ item }) {
   const ref = useRef(null)
   const [tilt, setTilt] = useState({
     transform:
@@ -92,7 +92,7 @@ function PortfolioCard({ item, index }) {
     const y = e.clientY - r.top
     const px = (x / r.width - 0.5) * 2
     const py = (y / r.height - 0.5) * 2
-    const max = 7
+    const max = 4
     const rotateY = px * max
     const rotateX = -py * max
     setTilt({
@@ -110,10 +110,7 @@ function PortfolioCard({ item, index }) {
   }, [])
 
   return (
-    <div
-      className="portfolio-card-anim"
-      style={{ animationDelay: `${index * 0.14}s` }}
-    >
+    <div className="portfolio-card-root">
       <div
         ref={ref}
         className="portfolio-card-tilt"
@@ -124,7 +121,11 @@ function PortfolioCard({ item, index }) {
         <div className="portfolio-card-gradient-border">
           <div className="portfolio-card-glass group">
             {item.id === 'gantt' ? <MockupGantt /> : <MockupEcom />}
-            <h2 className="portfolio-card-title">{item.title}</h2>
+            <h2
+              className={`portfolio-card-title ${item.id === 'ecom' ? 'portfolio-card-title--ecom' : ''}`}
+            >
+              {item.title}
+            </h2>
             <p className="portfolio-card-desc">{item.desc}</p>
             <div className="portfolio-card-tags">
               {item.stack.map((s) => (
@@ -146,7 +147,7 @@ function PortfolioCard({ item, index }) {
 export default function Projects() {
   return (
     <div className="relative z-10 mx-auto max-w-[1320px] px-4 py-16 md:px-10 md:py-20">
-      <ScrollReveal>
+      <ScrollReveal delay={0}>
         <h1 className="projects-page-title font-display mb-4 text-4xl text-white md:text-6xl">
           Proyectos
         </h1>
@@ -158,7 +159,13 @@ export default function Projects() {
 
       <div className="projects-page-grid">
         {portfolio.map((p, i) => (
-          <PortfolioCard key={p.id} item={p} index={i} />
+          <ScrollReveal
+            key={p.id}
+            className="projects-grid-reveal"
+            delay={0.08 + i * 0.1}
+          >
+            <PortfolioCard item={p} />
+          </ScrollReveal>
         ))}
       </div>
     </div>

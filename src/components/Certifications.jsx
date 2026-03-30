@@ -2,12 +2,26 @@ import ScrollReveal from './ScrollReveal'
 
 const certs = [
   {
+    id: 'django-orm',
+    title: 'Python / Django ORM',
+    issuer: 'Formación técnica',
+    year: '2024',
+    verifyHref: null,
+    brand: 'python',
+  },
+  {
+    id: 'laboral-el',
+    title: 'Certificado laboral TI',
+    issuer: 'E&L Consultores S.A.C.',
+    year: '2025',
+    verifyHref: null,
+    brand: 'company',
+  },
+  {
     id: 'pcap',
     title: 'Python Essentials (PCAP)',
     issuer: 'Cisco Networking Academy',
-    date: 'Febrero 2023',
-    focus:
-      'Lógica de programación y fundamentos sólidos.',
+    year: 'Feb. 2023',
     verifyHref: '/certificates/pcap-python-essentials-cisco.pdf',
     brand: 'cisco',
   },
@@ -15,19 +29,15 @@ const certs = [
     id: 'mongo',
     title: 'NoSQL con MongoDB',
     issuer: 'Código Facilito',
-    date: 'Marzo 2026',
-    focus:
-      'Manejo de bases de datos modernas y escalabilidad.',
+    year: 'Mar. 2026',
     verifyHref: '/certificates/nosql-mongodb-codigo-facilito.pdf',
     brand: 'codigo-facilito',
   },
   {
     id: 'git',
-    title: 'Curso profesional de Git',
+    title: 'Git profesional',
     issuer: 'Código Facilito',
-    date: 'Marzo 2026',
-    focus:
-      'Control de versiones y colaboración en flujos de trabajo profesionales.',
+    year: 'Mar. 2026',
     verifyHref: '/certificates/git-profesional-codigo-facilito.pdf',
     brand: 'codigo-facilito',
   },
@@ -58,41 +68,63 @@ function LogoCisco({ className }) {
   )
 }
 
+function CertLogo({ brand }) {
+  if (brand === 'cisco') {
+    return <LogoCisco className="cert-logo cert-logo--cisco" />
+  }
+  if (brand === 'python') {
+    return (
+      <span
+        className="cert-logo cert-logo--python fa-brands fa-python"
+        aria-hidden
+      />
+    )
+  }
+  if (brand === 'company') {
+    return (
+      <span
+        className="cert-logo cert-logo--company fa-solid fa-building"
+        aria-hidden
+      />
+    )
+  }
+  return (
+    <div className="cert-logo cert-logo--cf" aria-hidden>
+      CF
+    </div>
+  )
+}
+
 export default function Certifications() {
   return (
-    <ScrollReveal className="mt-16">
+    <ScrollReveal className="mt-16" delay={0.06}>
       <h2 className="font-display mb-2 text-4xl text-white md:text-5xl">
         Certificaciones
       </h2>
-      <p className="mb-8 max-w-2xl text-sm text-[#d4b8e0] md:text-base">
-        Formación reciente que refuerza mi perfil técnico y mi enfoque en datos,
-        backend y buenas prácticas de equipo.
+      <p className="mb-8 max-w-2xl text-sm leading-relaxed text-[#d4b8e0] md:text-base">
+        Formación y respaldo documental en tecnologías que aplico en proyectos
+        reales.
       </p>
       <ul className="cert-grid">
         {certs.map((c) => (
           <li key={c.id}>
             <article className="cert-card">
               <div className="cert-card__top">
-                {c.brand === 'cisco' ? (
-                  <LogoCisco className="cert-logo cert-logo--cisco" />
-                ) : (
-                  <div className="cert-logo cert-logo--cf" aria-hidden>
-                    CF
-                  </div>
-                )}
-                <span className="cert-card__issuer">{c.issuer}</span>
+                <CertLogo brand={c.brand} />
+                <span className="cert-year-badge">{c.year}</span>
               </div>
               <h3 className="cert-card__title">{c.title}</h3>
-              <p className="cert-card__date">{c.date}</p>
-              <p className="cert-card__focus">{c.focus}</p>
-              <a
-                className="cert-verify"
-                href={c.verifyHref}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Verificar credencial
-              </a>
+              <p className="cert-card__issuer-line">{c.issuer}</p>
+              {c.verifyHref ? (
+                <a
+                  className="cert-verify"
+                  href={c.verifyHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Verificar credencial
+                </a>
+              ) : null}
             </article>
           </li>
         ))}
