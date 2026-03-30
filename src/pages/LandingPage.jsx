@@ -110,6 +110,24 @@ const portfolio = [
     stack: ['React', 'Almacenamiento local', 'Imágenes de referencia'],
     link: '/projects/ecommerce',
   },
+  {
+    id: 'preschool',
+    title: 'Sitio Web para Preescolar',
+    roleBadge: 'Diseño y Desarrollo',
+    desc:
+      'Página web completa para un centro preescolar, incluyendo secciones de actividades, personal y formulario de inscripción.',
+    stack: ['React', 'Tailwind CSS', 'Componentes Modulares'],
+    link: '/projects/preschool',
+  },
+  {
+    id: 'blog',
+    title: 'Blog Personal',
+    roleBadge: 'Full Stack',
+    desc:
+      'Plataforma de blog personal para escribir y publicar artículos, con un diseño limpio y moderno.',
+    stack: ['React', 'Firebase', 'Markdown'],
+    link: '/projects/blog',
+  },
 ]
 
 function CareerExperienceCard({ children, variant }) {

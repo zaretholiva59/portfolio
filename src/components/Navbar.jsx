@@ -14,7 +14,7 @@ function smoothScroll(targetId) {
   }
 }
 
-export default function Navbar() {
+export default function Navbar({ activeLink }) {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -33,7 +33,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`nav-root ${scrolled ? 'nav-scrolled' : ''} relative`}
+      className={`nav-root ${scrolled ? 'nav-scrolled' : ''} sticky top-0 z-50`}
     >
       <a href="#home" className="nav-logo" onClick={(e) => handleLinkClick(e, '#home')}>
         &lt;Zareth /&gt;
@@ -56,7 +56,7 @@ export default function Navbar() {
             <a
               key={to}
               href={to}
-              className="nav-link interactive-glow"
+              className={`nav-link interactive-glow ${activeLink === to ? 'nav-link-active' : ''}`}
               onClick={(e) => handleLinkClick(e, to)}
             >
               {label}
