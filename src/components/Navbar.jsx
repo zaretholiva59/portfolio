@@ -65,7 +65,14 @@ export default function Navbar({ activeLink }) {
       </button>
 
       <div className={`nav-links-wrap ml-auto flex flex-1 items-center justify-end gap-3 ${open ? 'open' : ''}`}>
-        <nav className="nav-links relative flex flex-wrap items-center justify-end gap-1">
+        <nav
+          className="nav-links relative flex flex-wrap items-center justify-end gap-1"
+          style={{
+            ['--indicator-left']: `${indicatorStyle.left}px`,
+            ['--indicator-width']: `${indicatorStyle.width}px`,
+            ['--indicator-opacity']: indicatorStyle.opacity,
+          }}
+        >
           {links.map(({ to, label }) => (
             <a
               key={to}
@@ -76,14 +83,6 @@ export default function Navbar({ activeLink }) {
               {label}
             </a>
           ))}
-          <div
-            className="nav-indicator"
-            style={{
-              transform: `translateX(${indicatorStyle.left}px)`,
-              width: `${indicatorStyle.width}px`,
-              opacity: indicatorStyle.opacity,
-            }}
-          />
         </nav>
       </div>
     </header>

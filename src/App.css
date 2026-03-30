@@ -255,9 +255,30 @@ body.corporate-route {
 }
 
 .nav-links {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.35rem;
+  --indicator-left: 0px;
+  --indicator-width: 0px;
+  --indicator-opacity: 0;
+}
+
+.nav-links::after {
+  content: "";
+  position: absolute;
+  left: var(--indicator-left);
+  bottom: -4px;
+  width: var(--indicator-width);
+  height: 2px;
+  opacity: var(--indicator-opacity);
+  background: linear-gradient(90deg, var(--accent-3), var(--accent-2));
+  border-radius: 999px;
+  box-shadow: 0 0 10px var(--accent);
+  transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    width 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .nav-link {
