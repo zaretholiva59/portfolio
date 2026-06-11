@@ -30,6 +30,14 @@ const certs = [
     brand: 'codigo-facilito',
   },
   {
+    id: 'js-cert',
+    title: 'Curso Profesional de JavaScript',
+    issuer: 'Código Facilito',
+    year: 'Jun. 2026',
+    verifyHref: `${BASE_URL}certificates/Certificado - Curso profesional de JavaScript.pdf`,
+    brand: 'js',
+  },
+  {
     id: 'git',
     title: 'Git profesional',
     issuer: 'Código Facilito',
@@ -68,6 +76,13 @@ function CertLogo({ brand }) {
   if (brand === 'cisco') {
     return <LogoCisco className="cert-logo cert-logo--cisco" />
   }
+  if (brand === 'js') {
+    return (
+      <div className="cert-logo cert-logo--js" aria-hidden>
+        JS
+      </div>
+    )
+  }
   if (brand === 'company') {
     return (
       <span
@@ -92,7 +107,7 @@ export default function Certifications() {
       <p className="mb-8 max-w-2xl text-sm leading-relaxed text-[#d4b8e0] md:text-base">
         Evidencia documental que respalda mi trayectoria operativa y formación en sistemas.
       </p>
-      <ul className="cert-grid cert-grid--4">
+      <ul className="cert-grid">
         {certs.map((c) => (
           <li key={c.id}>
             <article className="cert-card">

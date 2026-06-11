@@ -88,36 +88,19 @@ const careerSodimac = {
   badges: ['Salesforce', 'Inventario', 'Retail', 'CRM', 'Logística'],
 }
 
-const GANTT_PREVIEW_IMG =
-  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=85'
+const TICKETMASTER_PREVIEW_IMG =
+  'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=85'
 
 const portfolio = [
   {
-    id: 'gantt',
-    title: 'Gestión de proyectos (Gantt)',
+    id: 'ticketmaster',
+    title: 'Ticketmaster Events',
     roleBadge: 'React + Vite',
     desc:
-      'Diagrama Gantt y Kanban con drag & drop, prioridades, fechas límite y persistencia en el navegador.',
-    stack: ['React', 'Vite', 'localStorage', 'CSS'],
-    link: 'https://github.com/zaretholiva59/gantt-manager',
-  },
-  {
-    id: 'ecom',
-    title: 'Comercio electrónico integral',
-    roleBadge: 'React + Vite',
-    desc:
-      'Catálogo, carrito, wishlist, búsqueda y flujo de pago simulado con persistencia en el navegador.',
-    stack: ['React', 'Vite', 'localStorage', 'CSS'],
-    link: 'https://github.com/zaretholiva59/ecommerce-app',
-  },
-  {
-    id: 'preschool',
-    title: 'Sistema de Gestión Preescolar',
-    roleBadge: 'React + Vite',
-    desc:
-      'Actividades, galería, calendario y anuncios para gestión de aulas preescolares.',
-    stack: ['React', 'Vite', 'localStorage', 'CSS'],
-    link: 'https://github.com/zaretholiva59/preschool-app',
+      'Buscador de eventos musicales que consume la API de Ticketmaster, con filtros por ubicación y visualización detallada.',
+    stack: ['React', 'Vite', 'API Rest', 'CSS'],
+    link: 'https://ticketmaster-events-five.vercel.app/',
+    repo: 'https://github.com/zaretholiva59/ticketmaster-events',
   },
 ]
 
@@ -131,82 +114,20 @@ function CareerExperienceCard({ children, variant }) {
   )
 }
 
-function MockupGantt() {
+function MockupTicketmaster() {
   return (
-    <div className="portfolio-mockup portfolio-mockup--gantt" aria-hidden>
+    <div className="portfolio-mockup portfolio-mockup--ticketmaster" aria-hidden>
       <img
-        className="portfolio-mockup__gantt-photo"
-        src={GANTT_PREVIEW_IMG}
+        className="portfolio-mockup__ticketmaster-photo"
+        src={TICKETMASTER_PREVIEW_IMG}
         alt=""
         loading="lazy"
       />
-      <div className="portfolio-mockup__gantt-scrim" />
-      <div className="portfolio-mockup__gantt-ui">
-        <div className="portfolio-mockup__gantt-header" />
-        <div className="portfolio-mockup__gantt-row">
-          <div className="portfolio-mockup__gantt-label" />
-          <div className="portfolio-mockup__gantt-track">
-            <div className="portfolio-mockup__gantt-bar" />
-          </div>
-        </div>
-        <div className="portfolio-mockup__gantt-row">
-          <div className="portfolio-mockup__gantt-label" />
-          <div className="portfolio-mockup__gantt-track">
-            <div className="portfolio-mockup__gantt-bar portfolio-mockup__gantt-bar--2" />
-          </div>
-        </div>
-        <div className="portfolio-mockup__gantt-row">
-          <div className="portfolio-mockup__gantt-label" />
-          <div className="portfolio-mockup__gantt-track">
-            <div className="portfolio-mockup__gantt-bar portfolio-mockup__gantt-bar--3" />
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function MockupEcom() {
-  return (
-    <div className="portfolio-mockup portfolio-mockup--ecom" aria-hidden>
-      <img
-        className="portfolio-mockup__ecom-photo"
-        src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=900&q=85"
-        alt=""
-        loading="lazy"
-      />
-      <div className="portfolio-mockup__ecom-overlay" />
-      <div className="portfolio-mockup__ecom-chrome">
-        <span className="portfolio-mockup__ecom-dot" />
-        <span className="portfolio-mockup__ecom-dot" />
-        <span className="portfolio-mockup__ecom-dot" />
-      </div>
-      <div className="portfolio-mockup__ecom-body">
-        <div className="portfolio-mockup__ecom-cell" />
-        <div className="portfolio-mockup__ecom-cell" />
-        <div className="portfolio-mockup__ecom-cell" />
-        <div className="portfolio-mockup__ecom-cell" />
-        <div className="portfolio-mockup__ecom-cell" />
-        <div className="portfolio-mockup__ecom-cell" />
-      </div>
-    </div>
-  )
-}
-
-function MockupPreschool() {
-  return (
-    <div className="portfolio-mockup portfolio-mockup--preschool" aria-hidden>
-      <img
-        className="portfolio-mockup__preschool-photo"
-        src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=900&q=85"
-        alt=""
-        loading="lazy"
-      />
-      <div className="portfolio-mockup__preschool-overlay" />
-      <div className="portfolio-mockup__preschool-content">
-        <div className="portfolio-mockup__preschool-block" />
-        <div className="portfolio-mockup__preschool-block" />
-        <div className="portfolio-mockup__preschool-block" />
+      <div className="portfolio-mockup__ticketmaster-overlay" />
+      <div className="portfolio-mockup__ticketmaster-content">
+        <div className="portfolio-mockup__ticketmaster-line" />
+        <div className="portfolio-mockup__ticketmaster-line" />
+        <div className="portfolio-mockup__ticketmaster-line" />
       </div>
     </div>
   )
@@ -250,12 +171,8 @@ function PortfolioCard({ item }) {
 
   const renderMockup = () => {
     switch (item.id) {
-      case 'gantt':
-        return <MockupGantt />
-      case 'ecom':
-        return <MockupEcom />
-      case 'preschool':
-        return <MockupPreschool />
+      case 'ticketmaster':
+        return <MockupTicketmaster />
       default:
         return null
     }
@@ -296,6 +213,18 @@ function PortfolioCard({ item }) {
               <Link to={item.link} className="portfolio-cta">
                 Ver proyecto
               </Link>
+            )}
+            {item.repo && (
+              <a
+                href={item.repo}
+                className="portfolio-cta mt-2"
+                style={{ borderColor: 'rgba(196, 79, 216, 0.45)' }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fa-brands fa-github mr-2"></i>
+                Código fuente
+              </a>
             )}
           </div>
         </div>

@@ -762,6 +762,51 @@ body.corporate-route {
   background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
 }
 
+.portfolio-mockup--ticketmaster {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-mockup__ticketmaster-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.portfolio-mockup__ticketmaster-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    145deg,
+    rgba(13, 0, 26, 0.8) 0%,
+    rgba(37, 99, 235, 0.4) 50%,
+    rgba(13, 0, 26, 0.8) 100%
+  );
+  z-index: 1;
+}
+
+.portfolio-mockup__ticketmaster-content {
+  position: relative;
+  z-index: 2;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.portfolio-mockup__ticketmaster-line {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  width: 40px;
+}
+
 .portfolio-mockup--gantt {
   display: flex;
   flex-direction: column;
@@ -1401,32 +1446,9 @@ body.corporate-route {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.15rem;
-  max-width: 1100px;
-}
-
-.cert-grid--4 {
-  max-width: 1180px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-@media (min-width: 960px) {
-  .cert-grid--4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 900px) {
-  .cert-grid:not(.cert-grid--4) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 560px) {
-  .cert-grid {
-    grid-template-columns: 1fr;
-  }
+  max-width: 1240px;
 }
 
 .cert-card {
@@ -1503,6 +1525,22 @@ body.corporate-route {
   border: 1px solid rgba(0, 230, 118, 0.28);
 }
 
+.cert-logo--js {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: -0.05em;
+  color: #f7df1e;
+  background: rgba(247, 223, 30, 0.12);
+  border: 1px solid rgba(247, 223, 30, 0.28);
+}
+
 .cert-logo--python {
   width: 48px;
   height: 48px;
@@ -1546,6 +1584,14 @@ body.corporate-route {
   transform: scale(1.05);
   border-color: rgba(246, 211, 101, 0.4);
   background: rgba(0, 230, 118, 0.18);
+}
+
+.cert-card:hover .cert-logo--js {
+  filter: drop-shadow(0 0 16px rgba(247, 223, 30, 0.75))
+    drop-shadow(0 0 24px rgba(246, 211, 101, 0.35));
+  transform: scale(1.05);
+  border-color: rgba(246, 211, 101, 0.4);
+  background: rgba(247, 223, 30, 0.18);
 }
 
 .cert-card:hover .cert-logo--python {
